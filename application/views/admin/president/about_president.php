@@ -1,0 +1,75 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h3 class="card-title">সভাপতি</h3>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="card-body">
+                    <script src="<?php echo base_url(); ?>assets/backend/plugins/ckeditor/ckeditor.js"></script>
+                    <?php echo form_open_multipart('Admin/about_president_update', 'role="form" id="fromvalid"'); ?>
+                    <input type="hidden" name="id" value="<?php if(!empty($about_president)){ echo $about_president->id; } ?>">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">সভাপতি তথ্য</div>
+                                <div class="panel-body">
+                                    <p class="help-block form_error"
+                                    style="font-size:11px;"><?php echo validation_errors("", "<br/>"); ?></p>
+                                    
+                                    <div class="form-group">
+                                        <label id="title">সভাপতি Name*</label>
+                                        <input type="text" name="title" id="title" class="form-control input-sm" value="<?php if(!empty($about_president)){ echo $about_president->name; }?>" data-bv-notempty="true">
+                                    </div>
+                                    <div class="form-group">
+                                        <label id="title">সভাপতি Description*</label>
+                                        <textarea name="pageditor" class="form-control" id="pageditor"><?php if(!empty($about_president)){ echo $about_president->about; } ?></textarea>
+                                    </div>
+                                    <!--<div class="form-group">
+                                        <label for="attachment">Attachment</label>
+                                        <input type="file" name="filename" id="attachment">
+                                        <p class="help-block" style="border:none;">Upload Attachments| Format doc, pdf, xls |
+                                            Max. Size 300 KB</p>
+                                    </div>-->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- /.col-lg-6 (nested) -->
+                        <div class="col-lg-12">
+                            <p style="border-top:1px solid #ccc;"></p>
+                            <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> Save
+                            </button>
+                            <button type="reset" class="btn btn-danger"><i class="glyphicon glyphicon-repeat"></i> Reset
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.row (nested) -->
+                    <?php echo form_close(); ?>
+
+                    <script>
+                        CKEDITOR.replace('pageditor');
+                    </script>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<script>
+	function preview_image(event) {
+		var reader = new FileReader();
+		reader.onload = function () {
+			var output = document.getElementById('output_image');
+			output.src = reader.result;
+		}
+		reader.readAsDataURL(event.target.files[0]);
+	}
+</script>

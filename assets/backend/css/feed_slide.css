@@ -1,0 +1,103 @@
+@charset "utf-8";
+/*
+=======================================================================
+        General Rules
+=======================================================================
+*/
+h5 {
+    font-size:14px;
+    font-weight:normal;
+    font-family: 'Ubuntu', sans-serif;
+}
+p {
+    line-height:28px;
+}
+.heading {
+    padding:10px 2% 10px 2%;
+    width:96%;
+    font-weight:bold;
+    margin-bottom:10px;
+    color:#FFF;
+}
+/*
+=======================================================================
+        Tabs Section - News Feeds Rules
+=======================================================================
+*/
+/*
+=======================================================================
+        News Feed Listings Rules
+=======================================================================
+*/
+.feedlist{
+  height: 305px !important;
+  float: left;
+  background-color: #EFEEEE;
+}
+.feedlist ul{
+    float:left;
+    list-style:none;
+}
+.feedlist ul li{
+    width:100%;
+    padding:5px 6px 5px 6px;
+    float:left;
+    border-bottom:#e2e2e2 solid 1px;
+}
+.feedlist ul li .event-item{
+    float:left;
+    padding:0px 0px 0px 0px;
+}
+.feedlist ul li .event-item p{
+    float:left;
+}
+.feedlist ul li .event-item a.readmore{
+    float:left;
+    color:#999999;
+    background:url(readmore.gif) no-repeat 0px 3px;
+    padding:0px 0px 0px 0px;
+}
+.slidebuttons{
+    width:100%;
+    height:60px !important;
+    float:left;
+    border:#eaeaea solid 1px;
+    background:#a517ba;
+}
+.slidebuttons p{
+    float:right;
+    padding:8px 0px 0px 10px;
+}
+.slidebuttons .readmore{
+    float:right;
+    padding:3px 20px 0px 0px;
+}
+#controls{
+    margin:325px 0px 0px 0px;
+    display:block;
+    position:absolute;
+}
+#controls a{
+    float:left;
+    border-left:#e0e0e0 solid 1px;
+}
+#controls a.prevBtn{
+    width:40px;
+    height:32px;
+    display:block;
+    float:left;
+    background:url(controls.png) no-repeat 0px 0px;
+}
+#controls a.nextBtn{
+    width:40px;
+    height:32px;
+    display:block;
+    float:left;
+    background:url(controls.png) no-repeat 0px -30px;
+}
+#controls a.prevBtn:hover{
+    background:url(controls.png) no-repeat -40px 0px;
+}
+#controls a.nextBtn:hover{
+    background:url(controls.png) no-repeat -40px -30px;
+}
