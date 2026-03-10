@@ -1,89 +1,109 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+    <style>
+        .btn-view {
+            padding: 6px 12px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .btn-form{
+             padding: 6px 12px;
+            background-color: orange;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .btn-delete{
+             padding: 6px 12px;
+            background-color: red;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+    </style>
 
 </head>
 
+
 <body>
 
-<div style="width:90%; margin:auto;">
+    <div style="width:90%; margin:auto;">
 
-<h2>Members List</h2>
+        <h2>Members List</h2>
 
-<table id="membersTable" class="display">
+        <?php $i = 1; ?>
+        <table id="membersTable" class="display">
 
-<thead>
-<tr>
-<th>ID</th>
-<th>Name</th>
-<th>Father Name</th>
-<th>Mobile</th>
-<th>NID</th>
-<!-- <th>Logo</th> -->
-<th>Documents</th>
-<th>Nominee Sign</th>
-</tr>
-</thead>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Father Name</th>
+                    <th>Mobile</th>
+                    <th>NID</th>
+                    <!-- <th>Logo</th> -->
+                </tr>
+            </thead>
 
-<tbody>
+            <tbody>
 
-<?php foreach($members as $row){ ?>
+                <?php foreach ($members as $row) { ?>
 
-<tr>
-<td><?php echo $row->id; ?></td>
-<td><?php echo $row->name; ?></td>
-<td><?php echo $row->father_name; ?></td>
-<td><?php echo $row->mobile_number; ?></td>
-<td><?php echo $row->nid; ?></td>
-
-
-<td>
-    <?php if(!empty($row->document_1)): ?>
-        <a href="<?php echo base_url('assets/uploads/project/members/members_document'.$row->document_1); ?>" target="_blank">View PDF</a>
-    <?php else: ?>
-        No Document
-    <?php endif; ?>
-</td>
-
-<td>
-    <?php if(!empty($row->nomini_sign)): ?>
-        <img src="<?php echo base_url('assets/uploads/project/members/nominee_sign/'.$row->nomini_sign); ?>" width="50" alt="Nomini Sign">
-    <?php else: ?>
-        No Image
-    <?php endif; ?>
-</td>
-<td>
-    <a href="<?php echo base_url('Site/view_member/'.$row->id); ?>" class="btn-view">View</a> |
-    <a href="<?php echo base_url('Site/update_member/'.$row->id); ?>" class="btn-edit">Edit</a> |
-    <a href="<?php echo base_url('Site/delete_member/'.$row->id); ?>" class="btn-delete" onclick="return confirm('Are you sure you want to delete this member?');">Delete</a>
-</td>
+                    <tr>
+                        <td><?php echo $i++; ?></td>
+                        <td><?php echo $row->name; ?></td>
+                        <td><?php echo $row->father_name; ?></td>
+                        <td><?php echo $row->mobile_number; ?></td>
+                        <td><?php echo $row->nid; ?></td>
 
 
-</tr>
 
-<?php } ?>
 
-</tbody>
+                        <td>
+                                <a href="<?php echo base_url('Site/view_member/' . $row->id); ?>" class="btn-view">Details</a>
+                                <a href="<?php echo base_url('Site/form_view/' . $row->id); ?>" class="btn-form">Preview</a>
+                                <a href="<?php echo base_url('Site/delete_member/' . $row->id); ?>" class="btn-delete"
+                                    onclick="return confirm('Are you sure you want to delete this member?');">Delete</a>
 
-</table>
+                        </td>
 
-</div>
 
-<script>
+                    </tr>
 
-$(document).ready(function(){
-    $('#membersTable').DataTable({
-        "pageLength":10
-    });
-});
+                <?php } ?>
 
-</script>
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <script>
+
+        $(document).ready(function () {
+            $('#membersTable').DataTable({
+                "pageLength": 10
+            });
+        });
+
+    </script>
 
 </body>
+
 </html>

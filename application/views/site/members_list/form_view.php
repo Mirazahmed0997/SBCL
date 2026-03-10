@@ -137,7 +137,7 @@
             <div style="display:flex;align-items:center;justify-content:center;">
                 <div
                     style="width:70px;height:70px;border:1px solid #000;border-radius:50%;margin-right:15px;display:flex;justify-content:center;align-items:center;overflow:hidden;">
-                    <img src="<?= base_url('assets/uploads/project/members/logo/'.$member->logo) ?>" alt="Logo"
+                    <img src="<?= base_url('assets/uploads/project/members/' . $member->logo) ?>" alt="Logo"
                         style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
                 </div>
                 <div>
@@ -217,7 +217,7 @@
         <div class="section-list">
 
             <div class="item">
-                <span class="label">১. সমিতির নাম :</span>
+                <span class="label">১. সমিতির নাম : branch_work_name</span>
                 <span style="margin-left:10px; font-weight:bold;"><?= $member->branch_name ?></span>
             </div>
 
@@ -280,38 +280,7 @@
             </div>
 
         </div>
-        <!-- <div class="section-list">
-            <script>
-                const items = [
-                    "১. সমিতির নাম",
-                    "২. সমিতির নিবন্ধিত ঠিকানা",
-                    "৩. বর্তমান ঠিকানা",
-                    "৪. যোগাযোগের মোবাইল নম্বর সমিতির",
-                    "৫. সভাপতি",
-                    "৬. সম্পাদক",
-                    "৭. তারিখ",
-                    "৮. সমিতির রেজিস্ট্রেশন নং",
-                    "৯. সমিতির শ্রেণি",
-                    "১০ . সমিতির সদস্য সংখ্যা",
-                    "১১. সমিতির সদস্য নির্বাচনী ও কর্ম এলাকা",
-
-                ];
-
-                document.write(items.map(i => `
-        <div class="item">
-          <span class="label">${i}</span>
-          <span style="margin-right:10px; font-weight: bold;"> : XXXXXXXXXXXXXXXXX</span>
-        </div>
-      `).join(""));
-
-
-                function printForm() {
-                    window.print();
-                }
-            </script>
-            <span class="label">১২. মনোনীত সদস্যের পরিচয়পত্র (সংযুক্ত)</span><br>
-            <span class="label">১৩. সমিতি জেলা সমবায় ইউনিয়নের সদস্যভুক্ত/সদস্যভুক্ত নহে</span>
-        </div> -->
+     
 
         <!-- Footer -->
         <div class="footer">

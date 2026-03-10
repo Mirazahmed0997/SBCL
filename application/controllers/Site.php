@@ -482,13 +482,44 @@ class Site extends CI_Controller
 	}
 
 
+	//   ---------------------------- function for file uploads------------------
+
+	private function update_file($field_name, $upload_path, $old_file = null, $allowed_types = 'jpg|jpeg|png|pdf')
+	{
+		if (!empty($_FILES[$field_name]['name'])) {
+
+			$config['upload_path'] = $upload_path;
+			$config['allowed_types'] = $allowed_types;
+			$config['file_name'] = time();
+			$this->load->library('upload', $config);
+
+			$this->upload->initialize($config); // Re-initialize for multiple files
+
+			if ($this->upload->do_upload($field_name)) {
+				$fileData = $this->upload->data();
+
+				// Delete old file if exists
+				if ($old_file && file_exists($upload_path . $old_file)) {
+					@unlink($upload_path . $old_file);
+				}
+
+				return $fileData['file_name'];
+			}
+		}
+
+		// Return old file if no new file is uploaded
+		return $old_file;
+	}
+
+	// ---------------------create member-----------------
+
 
 	public function member_application_save()
 	{
 
-		$logo = $this->upload_file('logo','./assets/uploads/project/members/logo/');
-		$document_1 = $this->upload_file('document_1','./assets/uploads/project/members/members_document/');
-		$nomini_sign = $this->upload_file('nomini_sign','./assets/uploads/project/members/nominee_sign/');
+		$logo = $this->upload_file('logo', './assets/uploads/project/members/logo/');
+		$document_1 = $this->upload_file('document_1', './assets/uploads/project/members/members_document/');
+		$nomini_sign = $this->upload_file('nomini_sign', './assets/uploads/project/members/nominee_sign/');
 
 		$data = array(
 
@@ -537,8 +568,8 @@ class Site extends CI_Controller
 			'logo' => $logo,
 			'document_1' => $document_1,
 			'nomini_sign' => $nomini_sign,
-			
-			
+
+
 		);
 
 		$this->db->insert('members_n', $data);
@@ -550,27 +581,44 @@ class Site extends CI_Controller
 
 	// ---------------------get all members-----------------
 	public function members_list()
-{
-    $data['members'] = $this->db->get('members_n')->result();
-    $this->load->view('site/members_list/members_list', $data);
-}
+	{
+		$data['members'] = $this->db->get('members_n')->result();
+		$this->load->view('site/members_list/members_list', $data);
+	}
 
 
 	// ---------------------get single members-----------------
 
 
-public function view_member($id) {
-    $data['member'] = $this->Common->get_data_single_conditional('members_n', 'id', $id)->row();
-    $this->load->view('site/members_list/member_Details', $data);
-}
+	public function view_member($id)
+	{
+		$data['member'] = $this->Common->get_data_single_conditional('members_n', 'id', $id)->row();
+		$this->load->view('site/members_list/member_Details', $data);
+	}
+	public function form_view($id)
+	{
+		$data['member'] = $this->Common->get_data_single_conditional('members_n', 'id', $id)->row();
+		$this->load->view('site/members_list/form_view', $data);
+
+	}
 
 
-	// ---------------------Edit single members Data-----------------
+	// ---------------------Edit member's Data-----------------
 
 
-	public function update_member($id) {
-    $update_data = [
-         'sarok_no' => $this->input->post('sarok_no'),
+	public function edit_member($id)
+	{
+		$data['member'] = $this->db->get_where('members_n', ['id' => $id])->row();
+		$this->load->view('site/members_list/updateForm', $data);
+	}
+
+
+	public function update_member($id)
+	{
+		$member = $this->db->get_where('members_n', ['id' => $id])->row();
+
+		$update_data = [
+			'sarok_no' => $this->input->post('sarok_no'),
 			'sarok_date' => $this->input->post('sarok_date'),
 
 			'name' => $this->input->post('name'),
@@ -611,13 +659,78 @@ public function view_member($id) {
 			'nomini_designation' => $this->input->post('nomini_designation'),
 			'nomini_mobile_no' => $this->input->post('nomini_mobile_no'),
 			'nomini_date' => $this->input->post('nomini_date'),
-    ];
+		];
 
-    $this->db->where('id', $id);
-    $this->db->update('members_n', $update_data);
+		// Handle file uploads
 
-    redirect('members_list'); // Go back to the members list
-}
+
+		$update_data['logo'] = $this->update_file(
+			'logo',
+			'./assets/uploads/project/members/',
+			$member->logo,
+			'jpg|jpeg|png'
+		);
+
+		$update_data['nomini_sign'] = $this->update_file(
+			'nomini_sign',
+			'./assets/uploads/project/members/nominee_sign/',
+			$member->nomini_sign,
+			'jpg|jpeg|png'
+		);
+
+		$update_data['document_1'] = $this->update_file(
+			'document_1',
+			'./assets/uploads/project/members/',
+			$member->document_1,
+			'pdf'
+		);
+
+
+
+		// if(!empty($_FILES['logo']['name'])) {
+		//     $config['upload_path'] = './assets/uploads/project/members/';
+		//     $config['allowed_types'] = 'jpg|jpeg|png';
+		//     $config['file_name'] = time();
+		//     $this->load->library('upload', $config);
+
+		//     if($this->upload->do_upload('logo')) {
+		//         $uploadData = $this->upload->data();
+		//         $update_data['logo'] = $uploadData['file_name'];
+		//         if(!empty($member->logo)) @unlink('./assets/uploads/project/members/'.$member->logo);
+		//     }
+		// }
+
+		// if(!empty($_FILES['nomini_sign']['name'])) {
+		//     $config['upload_path'] = './assets/uploads/project/members/nominee_sign/';
+		//     $config['allowed_types'] = 'jpg|jpeg|png';
+		//     $config['file_name'] = time();
+		//     $this->upload->initialize($config);
+
+		//     if($this->upload->do_upload('nomini_sign')) {
+		//         $uploadData = $this->upload->data();
+		//         $update_data['nomini_sign'] = $uploadData['file_name'];
+		//         if(!empty($member->nomini_sign)) @unlink('./assets/uploads/project/members/nominee_sign/'.$member->nomini_sign);
+		//     }
+		// }
+
+		// if(!empty($_FILES['document_1']['name'])) {
+		//     $config['upload_path'] = './assets/uploads/project/members/';
+		//     $config['allowed_types'] = 'pdf';
+		//     $config['file_name'] = time();
+		//     $this->upload->initialize($config);
+
+		//     if($this->upload->do_upload('document_1')) {
+		//         $uploadData = $this->upload->data();
+		//         $update_data['document_1'] = $uploadData['file_name'];
+		//         if(!empty($member->document_1)) @unlink('./assets/uploads/project/members/'.$member->document_1);
+		//     }
+		// }
+
+		$this->db->where('id', $id);
+		$this->db->update('members_n', $update_data);
+
+		redirect(base_url('site/view_member/'.$id));
+	}
 
 
 
@@ -626,10 +739,11 @@ public function view_member($id) {
 	// ---------------------Delete single members-----------------
 
 
-	public function delete_member($id) {
-    $this->Common->delete_data('members_n', 'id', $id);
-    redirect('members');
-}
+	public function delete_member($id)
+	{
+		$this->Common->delete_data('members_n', 'id', $id);
+		redirect('members');
+	}
 
 
 
