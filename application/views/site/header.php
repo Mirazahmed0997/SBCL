@@ -228,6 +228,15 @@
                 </ul>
             </nav>
 
+
+             <!-- <div class="header-controls">
+                <div class="lang-switch">
+                    <a href="admin"><button  id="langBtn">লগইন</button></a>
+                </div>
+            </div> -->
+
+         
+
             <div class="header-controls">
                 <div class="lang-switch">
                     <button onclick="toggleLanguage()" id="langBtn">English</button>
