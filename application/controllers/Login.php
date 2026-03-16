@@ -30,7 +30,10 @@ class Login extends CI_Controller
 		$this->engine->render_front_view($data, $path, $this->header, $this->footer, $this->main_layout);
 	}
 
-
+	public function admin_registration_saved()
+	{
+			
+	}
 
 
 
