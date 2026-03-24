@@ -87,15 +87,15 @@ class Admin_login extends CI_Controller
 
             } else {
 
-                $this->session->set_flashdata('login_failed', 'Wrong Password');
-                redirect('login/login');
-
+                $this->session->set_flashdata('error', 'ভুল পাসওয়ার্ড');
+                redirect('admin');
             }
 
         } else {
 
-            $this->session->set_flashdata('login_failed', 'Mobile number not found');
-            redirect('login/login');
+            $this->session->set_flashdata('error', 'Mobile number not found Please Registration First');
+            // redirect('login/login');
+            redirect('admin_registration_form');
         }
     }
 

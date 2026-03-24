@@ -57,8 +57,8 @@
                                 <div class="col-7">
                                     <?php if ($user->role == 'admin'): ?>
                                         <span class="badge bg-danger">Admin</span>
-                                    <?php elseif ($user->role == 'manager'): ?>
-                                        <span class="badge bg-warning text-dark">Manager</span>
+                                    <?php elseif ($user->role == 'super_admin'): ?>
+                                        <span class="badge bg-warning text-dark">Super Admin</span>
                                     <?php else: ?>
                                         <span class="badge bg-info">User</span>
                                     <?php endif; ?>

@@ -83,18 +83,18 @@
 
 <?php if ($this->session->flashdata('error')): ?>
 
-<div style="width:500px;margin:20px auto;" class="alert alert-danger">
-    <?php echo $this->session->flashdata('error'); ?>
-</div>
+    <div style="width:500px;margin:20px auto;" class="alert alert-danger">
+        <?php echo $this->session->flashdata('error'); ?>
+    </div>
 
 <?php endif; ?>
 
 
 <?php if ($this->session->flashdata('success')): ?>
 
-<div style="width:500px;margin:20px auto;" class="alert alert-success">
-    <?php echo $this->session->flashdata('success'); ?>
-</div>
+    <div style="width:500px;margin:20px auto;" class="alert alert-success">
+        <?php echo $this->session->flashdata('success'); ?>
+    </div>
 
 <?php endif; ?>
 
@@ -166,6 +166,15 @@
         <div class="button-group">
             <button type="submit" class="btn btn-register">Register</button>
             <button type="reset" class="btn btn-reset">Reset</button>
+        </div>
+
+        <div class="text-center mt-2">
+            <p>
+                লগইন করতে
+                <a href="<?php echo base_url('admin_dashboard'); ?>">
+                    এখানে ক্লিক করুন
+                </a>
+            </p>
         </div>
 
     </form>

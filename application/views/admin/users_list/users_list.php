@@ -29,7 +29,7 @@
                         </button>
                     </div>
 
-                    <div class="col-md">
+                    <!-- <div class="col-md">
                         <select name="role" class="form-select">
                             <option value="">ভূমিকা</option>
 
@@ -40,24 +40,11 @@
                             <?php endforeach; ?>
 
                         </select>
-                    </div>
+                    </div> -->
 
 
 
                 </div>
-
-                <!-- Row 2 -->
-                <div class="row g-2 align-items-center">
-
-
-                    <div class="col-md-auto">
-                        <button type="submit" class="btn btn-success">
-                            <i class="fas fa-search"></i> Search
-                        </button>
-                    </div>
-
-                </div>
-
             </form>
 
         </div>
@@ -65,10 +52,14 @@
 
     <section class="content">
         <div class="container-fluid">
-
+            <?php if ($this->session->flashdata('error')): ?>
+                <div class="alert alert-danger">
+                    <?php echo $this->session->flashdata('error'); ?>
+                </div>
+            <?php endif; ?>
             <div class="card shadow">
                 <div class="card-header bg-primary text-white text-center">
-                    <h5 class="mb-0 text-center">সদস্য তালিকা</h5>
+                    <h5 class="mb-0 text-center">ইউজার তালিকা</h5>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -104,8 +95,8 @@
                                                     </option>
                                                     <option value="user" <?= $row->role == 'user' ? 'selected' : '' ?>>User
                                                     </option>
-                                                    <option value="manager" <?= $row->role == 'manager' ? 'selected' : '' ?>>
-                                                        Manager</option>
+                                                    <option value="manager" <?= $row->role == 'super_admin' ? 'selected' : '' ?>>
+                                                        Super Admin</option>
                                                 </select>
                                             </form>
                                         </td>
@@ -115,11 +106,7 @@
                                         <td><a href="<?= base_url('Admin/view_user/' . $row->id); ?>"
                                                 class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a></td>
                                         <td>
-
-                                            <a href="<?= base_url('Admin/view_user/' . $row->id); ?>"
-                                                class="btn btn-warning btn-sm">Preview</a>
-
-                                            <a href="<?= base_url('Admin/delete_member/' . $row->id); ?>"
+                                            <a href="<?= base_url('Admin/delete_user/' . $row->id); ?>"
                                                 class="btn btn-danger btn-sm"
                                                 onclick="return confirm('Are you sure?');">Delete</a>
                                         </td>

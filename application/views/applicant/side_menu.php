@@ -30,7 +30,7 @@
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
-                            <!--<i class="right fas fa-angle-left"></i>-->
+                            <!-- <i class="right fas fa-angle-left"></i> -->
                         </p>
                     </a>
                 </li>
@@ -38,7 +38,7 @@
 
                 <li class="nav-item has-treeview <?= active_open('members_list', $main_nav); ?>">
                     <a href="#" class="nav-link <?= active_nav('members_list', $main_nav); ?>">
-                        <i class="nav-icon fas fa-edit"></i>
+                        <i class="nav-icon fas fa-user"></i>
                         <p>
                             সদস্য ব্যবস্থাপনা
                             <i class="fas fa-angle-left right"></i>
@@ -124,7 +124,5 @@
 
             </ul>
         </nav>
-        <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
 </aside>

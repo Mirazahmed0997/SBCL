@@ -125,7 +125,7 @@
 
                 <a href="<?php echo base_url('Admin/registered_user_list') ?>"
                     class="nav-link <?= active_nav('user_list', $main_nav); ?>">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <i class="nav-icon fas fa-list"></i>
                     <p>
                         রেজিস্টার্ড ইউজার তালিকা
                     </p>
@@ -139,7 +139,7 @@
 
                 <li class="nav-item has-treeview <?= active_open('applicant', $main_nav); ?>">
                     <a href="#" class="nav-link <?= active_nav('applicant', $main_nav); ?>">
-                        <i class="nav-icon fas fa-edit"></i>
+                        <i class="nav-icon fas fa-user"></i>
                         <p>
                             সদস্য ব্যবস্থাপনা
                             <i class="fas fa-angle-left right"></i>
@@ -175,7 +175,7 @@
 
                 <li class="nav-item has-treeview <?= active_open('applicant', $main_nav); ?>">
                     <a href="#" class="nav-link <?= active_nav('applicant', $main_nav); ?>">
-                        <i class="nav-icon fas fa-edit"></i>
+                        <i class="nav-icon fas fa-users"></i>
                         <p>
                             ইউজার ব্যবস্থাপনা
                             <i class="fas fa-angle-left right"></i>

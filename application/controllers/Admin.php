@@ -42,11 +42,20 @@ class Admin extends CI_Controller
 		$this->engine->render_view($data, $path, $this->side_menu, $this->main_layout);
 	}
 
+// ---------------------middle ware--------------------
+	private function require_super_admin()
+	{
+		$user = $this->session->userdata('login_user_info_all');
+
+		if ($user->role !== 'super_admin') {
+			$this->session->set_flashdata('error', 'Only Super Admin have access to Update & Delete  user.');
+			redirect('admin/users_list/users_list');
+			exit;
+		}
+	}
 
 
-
-
-// --------------single member details------------
+	// --------------single member details------------
 
 	public function view_member($id = null)
 	{
@@ -150,6 +159,37 @@ class Admin extends CI_Controller
 		$this->engine->render_view($data, $path, $this->side_menu, $this->main_layout);
 	}
 
+	// ---------------------delete member-----------------
+
+	public function delete_member($id)
+	{
+		$this->Common->delete_data('members_n', 'id', $id);
+		redirect('members');
+	}
+
+
+
+	  // -------------------member account details---------------------
+
+   public function members_account($id = null)
+{
+    $data = $this->engine->store_nav('members_list', 'members_list', 'সদস্য বিস্তারিত');
+
+    // OPTIONAL: comment this for now
+    // if (empty($id)) {
+    //     redirect(base_url('Applicant/members_list'));
+    // }
+
+    // OPTIONAL: disable DB check for now
+    // $data['member'] = ...
+    // if (!$data['member']) {
+    //     show_404();
+    // }
+
+    $path = 'admin/members_list/members_accounts_details';
+    $this->engine->render_view($data, $path, $this->side_menu, $this->main_layout);
+}
+
 
 
 
@@ -200,14 +240,11 @@ class Admin extends CI_Controller
 		$this->engine->render_view($data, $path, $this->side_menu, $this->main_layout);
 	}
 
-
-
-
-
 	// -----------------------update users role--------------
 
 	public function update_users_role($id)
 	{
+		$this-> require_super_admin();
 		$users = $this->db->get_where('users', ['id' => $id])->row();
 
 		$update_data = [
@@ -227,7 +264,7 @@ class Admin extends CI_Controller
 	// ---------------single user detail-----------------------
 
 
-		public function view_user($id = null)
+	public function view_user($id = null)
 	{
 		//  Redirect if no ID
 		if (empty($id)) {
@@ -242,13 +279,50 @@ class Admin extends CI_Controller
 
 		//  Check if member exists
 		if (!$data['user']) {
-			show_404(); 
+			show_404();
 		}
 
 		//  Render the member details inside dashboard layout
 		$path = 'admin/users_list/users_details';
 		$this->engine->render_view($data, $path, $this->side_menu, $this->main_layout);
 	}
+
+
+	// -------------------Upadate USer-----------------
+	public function update_users_details($id)
+	{
+		$users = $this->db->get_where('users', ['id' => $id])->row();
+
+		$update_data = [
+
+			'first_name' => $this->input->post('first_name'),
+			'last_name' => $this->input->post('last_name'),
+
+			'username' => $this->input->post('username'),
+			'mobile_number' => $this->input->post('mobile_number'),
+			'designation' => $this->input->post('designation'),
+			'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+		];
+
+
+		$this->db->where('id', $id);
+		$this->db->update('users', $update_data);
+
+		redirect(base_url('admin/users_list/users_details'));
+	}
+
+
+
+	// ---------------------delete user-----------------
+
+	public function delete_user($id)
+	{
+		$this-> require_super_admin();
+		$this->Common->delete_data('users', 'id', $id);
+		redirect('admin/users_list/users_details');
+	}
+
+
 
 
 

@@ -27,6 +27,8 @@ $route['members_list'] = 'Admin/members_list/members_list';
 $route['view_member/(:id)'] = 'Admin/view_member/$1';
 $route['edit_member/(:id)'] = 'Admin/edit_member/$1';
 $route['delete_member/(:id)'] = 'Admin/delete_member/$1';
+$route['members_account_details_admin'] = 'Admin/members_account';
+
 
 
 
@@ -54,7 +56,10 @@ $route['members'] = 'Applicant/members_list/members_list';
 $route['view_member/(:id)'] = 'Applicant/view_member/$1';
 $route['edit_member/(:id)'] = 'Applicant/edit_member/$1';
 $route['delete_member/(:id)'] = 'Applicant/delete_member/$1';
+$route['members_account_details'] = 'Applicant/members_account';
+
 $route['update_member/(:id)'] = 'Site/update_member/$1';
+
 
 
 

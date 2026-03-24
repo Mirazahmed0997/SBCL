@@ -62,6 +62,31 @@ class Applicant extends CI_Controller
 
 
 
+
+
+    // -------------------member account details---------------------
+
+   public function members_account($id = null)
+{
+    $data = $this->engine->store_nav('members_list', 'members_list', 'সদস্য বিস্তারিত');
+
+    // OPTIONAL: comment this for now
+    // if (empty($id)) {
+    //     redirect(base_url('Applicant/members_list'));
+    // }
+
+    // OPTIONAL: disable DB check for now
+    // $data['member'] = ...
+    // if (!$data['member']) {
+    //     show_404();
+    // }
+
+    $path = 'applicant/members_list/members_accounts_details';
+    $this->engine->render_view($data, $path, $this->side_menu, $this->main_layout);
+}
+
+
+
     // -------------------Form View---------------------
 
     public function form_view($id = null)
