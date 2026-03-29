@@ -4,6 +4,7 @@
 <!-- <?php $this->load->view('site/pages/slider'); ?> -->
 
 
+<?php $this->load->view('site/pages/company_details/details_layout'); ?>
 
 
 
