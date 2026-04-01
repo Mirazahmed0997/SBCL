@@ -16,8 +16,8 @@ $managment_info = $this->db->order_by('id', 'asc')
                     <h3><?= htmlspecialchars($info['name']) ?></h3>
                     <p class="designation"><?= htmlspecialchars($info['designation']) ?></p>
                     <p class="details">
-                        <?= htmlspecialchars(mb_substr($info['details'], 0, 50)) ?>       
-                         <?= mb_strlen($info['details']) > 50 ? '...' : '' ?>
+                        <?= htmlspecialchars(mb_substr($info['details'], 0, 50)) ?>
+                        <?= mb_strlen($info['details']) > 50 ? '...' : '' ?>
                     </p>
                     <a href="<?= base_url('management_details/' . $info['id']); ?>" class="dashed-link">বিস্তারিত</a>
                 </div>
@@ -42,7 +42,6 @@ $managment_info = $this->db->order_by('id', 'asc')
 
 
 <style>
-
     .employees .section-title {
         margin-top: 10px;
         background: #7a1c87;
@@ -53,6 +52,7 @@ $managment_info = $this->db->order_by('id', 'asc')
         text-align: center;
         border-radius: 6px 6px 0 0;
     }
+
     .employees {
         flex: 1 1 55%;
         text-align: center;
@@ -78,6 +78,9 @@ $managment_info = $this->db->order_by('id', 'asc')
         max-height: 800px;
         overflow-y: auto;
         padding-right: 10px;
+        justify-content: flex-start;
+
+
     }
 
     .employee-cards::-webkit-scrollbar {
@@ -90,10 +93,8 @@ $managment_info = $this->db->order_by('id', 'asc')
     }
 
     .employee-card.employee-card {
-        flex: 1 1 calc(50% - 20px);
-        /* Two cards per row on desktop */
-        /* background: linear-gradient(90deg, #32aaba, #feb47b); */
-        /* background: #cbb2b2; */
+        flex: 0 0 calc(50% - 10px);
+        max-width: calc(50% - 10px);
         background: #9ab6ba;
         border-radius: 10px;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
