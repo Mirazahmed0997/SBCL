@@ -53,6 +53,10 @@ $route['slider_list'] = 'home_Page_managment_controller/slider_list';
 $route['update_slider_status/(:num)'] = 'home_Page_managment_controller/slider_active_status/$1';
 $route['delete_slider/(:num)'] = 'home_Page_managment_controller/delete_slider/$1';
 
+// -----------------------------managment list-----------------------
+
+$route['managment_list'] = 'home_Page_managment_controller/managment_list';
+$route['delete_info/(:num)'] = 'home_Page_managment_controller/delete_info/$1';
 
 
 

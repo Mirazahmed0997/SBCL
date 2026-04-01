@@ -1,76 +1,41 @@
+<?php
+$managment_info = $this->db->order_by('id', 'asc')
+    ->get('managment_info')
+    ->result_array();
+?>
+
 <div class="employees">
     <h2>ব্যবস্থাপনা কমিটি</h2>
     <div class="employee-cards">
-        <div class="employee-card">
-            <img src="https://img3.stockfresh.com/files/k/kraska/m/97/808337_stock-photo-user-icon.jpg" alt="John Doe">
-            <h3>মোঃ জসিম উদ্দিন শেখ
-            </h3>
-            <p class="designation">CEO</p>
-            <p class="details">John leads the company with vision and innovation.</p>
-        </div>
-        <div class="employee-card">
-            <img src="https://img3.stockfresh.com/files/k/kraska/m/97/808337_stock-photo-user-icon.jpg"
-                alt="Jane Smith">
-            <h3>Jane Smith</h3>
-            <p class="designation">Project Manager</p>
-            <p class="details">Jane ensures projects run smoothly and efficiently.</p>
-        </div>
-        <div class="employee-card">
-            <img src="https://img3.stockfresh.com/files/k/kraska/m/97/808337_stock-photo-user-icon.jpg"
-                alt="Mike Brown">
-            <h3>Mike Brown</h3>
-            <p class="designation">Lead Developer</p>
-            <p class="details">Mike builds robust and scalable software solutions.</p>
-        </div>
-        <div class="employee-card">
-            <img src="https://img3.stockfresh.com/files/k/kraska/m/97/808337_stock-photo-user-icon.jpg"
-                alt="Emily White">
-            <h3>Emily White</h3>
-            <p class="designation">Designer</p>
-            <p class="details">Emily crafts beautiful and intuitive UI/UX designs.</p>
-        </div>
-        <div class="employee-card">
-            <img src="https://img3.stockfresh.com/files/k/kraska/m/97/808337_stock-photo-user-icon.jpg"
-                alt="Emily White">
-            <h3>Emily White</h3>
-            <p class="designation">Designer</p>
-            <p class="details">Emily crafts beautiful and intuitive UI/UX designs.</p>
-        </div>
-        <div class="employee-card">
-            <img src="https://img3.stockfresh.com/files/k/kraska/m/97/808337_stock-photo-user-icon.jpg"
-                alt="Emily White">
-            <h3>Emily White</h3>
-            <p class="designation">Designer</p>
-            <p class="details">Emily crafts beautiful and intuitive UI/UX designs.</p>
-        </div>
-        <div class="employee-card">
-            <img src="https://img3.stockfresh.com/files/k/kraska/m/97/808337_stock-photo-user-icon.jpg"
-                alt="Emily White">
-            <h3>Emily White</h3>
-            <p class="designation">Designer</p>
-            <p class="details">Emily crafts beautiful and intuitive UI/UX designs.</p>
-        </div>
-        <div class="employee-card">
-            <img src="https://img3.stockfresh.com/files/k/kraska/m/97/808337_stock-photo-user-icon.jpg"
-                alt="Emily White">
-            <h3>Emily White</h3>
-            <p class="designation">Designer</p>
-            <p class="details">Emily crafts beautiful and intuitive UI/UX designs.</p>
-        </div>
-        <div class="employee-card">
-            <img src="https://img3.stockfresh.com/files/k/kraska/m/97/808337_stock-photo-user-icon.jpg"
-                alt="Emily White">
-            <h3>Emily White</h3>
-            <p class="designation">Designer</p>
-            <p class="details">Emily crafts beautiful and intuitive UI/UX designs.</p>
-        </div>
-        <div class="employee-card">
-            <img src="https://img3.stockfresh.com/files/k/kraska/m/97/808337_stock-photo-user-icon.jpg"
-                alt="Emily White">
-            <h3>Emily White</h3>
-            <p class="designation">Designer</p>
-            <p class="details">Emily crafts beautiful and intuitive UI/UX designs.</p>
-        </div>
+
+
+
+        <?php if (!empty($managment_info)): ?>
+            <?php foreach ($managment_info as $info): ?>
+                <div class="employee-card">
+                    <img src="<?= base_url('./assets/uploads/project/management_img/' . $info['image']) ?>" alt="Jane Smith">
+                    <h3><?= htmlspecialchars($info['name']) ?></h3>
+                    <p class="designation"><?= htmlspecialchars($info['designation']) ?></p>
+                    <p class="details">
+                        <?= htmlspecialchars(mb_substr($info['details'], 0, 50)) ?>       
+                         <?= mb_strlen($info['details']) > 50 ? '...' : '' ?>
+                    </p>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <div class="swiper-slide">
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="No slides">
+                    <div class="card-body">
+                        <h5 class="card-title">No info available</h5>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+
+
+
+
 
     </div>
 </div>
@@ -116,7 +81,9 @@
     .employee-card.employee-card {
         flex: 1 1 calc(50% - 20px);
         /* Two cards per row on desktop */
-        background: #fff;
+        /* background: linear-gradient(90deg, #32aaba, #feb47b); */
+        /* background: #cbb2b2; */
+        background: #9ab6ba;
         border-radius: 10px;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         padding: 20px;
@@ -128,9 +95,9 @@
     }
 
     .employee-card img {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
+        width: 100%;
+        height: 300px;
+        /* border-radius: 50%; */
         object-fit: cover;
         margin-bottom: 15px;
     }

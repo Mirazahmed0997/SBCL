@@ -5,7 +5,7 @@
     <div class="modal-dialog ">
         <div class="modal-content">
 
-            <form action="<?= base_url('home_Page_managment_controller/update_slider/'); ?>" method="post"  enctype="multipart/form-data">
+            <form action="<?= base_url('home_Page_managment_controller/update_slider/'); ?>" method="post" enctype="multipart/form-data">
 
                 <div class="modal-header">
                     <h5 class="modal-title">Update Slider</h5>
@@ -25,7 +25,7 @@
                     <div class="form-group">
                         <label class="text-green">Image</label>
                         <div style="position:relative;">
-                            <input type="file" name="image" id="details" class="form-control" placeholder="Details"></input>
+                            <input type="file" name="image" id="image" class="form-control"></input>
                         </div>
                     </div>
 

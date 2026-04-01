@@ -17,6 +17,10 @@
 </div>
 
 <style>
+
+    .logo{
+        background-color: white;
+    }
     .top-header {
         border-bottom: 1px solid white;
         padding: 5px 10px;
@@ -43,11 +47,11 @@
 
     .header-flex .company_info {
         font-size: 18px;
-        font-weight: 600;
+        font-weight:900;
         margin: 0;
-        color: wheat;
-        -webkit-text-stroke: 1px #000;
-        text-stroke: 1px #000;
+        color: white;
+        /* -webkit-text-stroke: 1px #000;
+        text-stroke: 1px #000; */
     }
 
     @media (max-width: 768px) {

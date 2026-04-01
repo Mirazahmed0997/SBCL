@@ -74,10 +74,6 @@ class home_Page_managment_controller extends CI_Controller
         redirect('slider_list');
     }
 
-
-
-
-
     // -----------------------all slider_list---------------
 
 
@@ -92,11 +88,15 @@ class home_Page_managment_controller extends CI_Controller
         $image = $this->input->get('image');
         $created_at = $this->input->get('created_at');
         $posted_by = $this->input->get('posted_by');
+        $status = $this->input->get('status');
 
 
 
         if (!empty($id)) {
             $where_data['id'] = $id;
+        }
+        if ($status !== '' && $status !== null) {
+            $where_data['status'] = $status;
         }
 
         if (!empty($title)) {
@@ -172,8 +172,8 @@ class home_Page_managment_controller extends CI_Controller
 
     public function update_slider()
     {
-       $id = $this->input->post('slider_id');
-       $slider = $this->db->get_where('image_slider', ['id' => $id])->row();
+        $id = $this->input->post('slider_id');
+        $slider = $this->db->get_where('image_slider', ['id' => $id])->row();
 
         $update_data = [
             'title' => $this->input->post('title'),
@@ -238,9 +238,170 @@ class home_Page_managment_controller extends CI_Controller
 
 
 
+    // ----------------------management info----------------------------------
+
+
+    public function managment_list()
+    {
+        $data = $this->engine->store_nav('managment_info', 'managment_info', 'ব্যবস্থাপনা');
+
+        $where_data = array();
+
+        $id = $this->input->get('id');
+        $name = $this->input->get('name');
+        $image = $this->input->get('image');
+        $designation = $this->input->get('designation');
+        $posted_by = $this->input->get('posted_by');
+        $details = $this->input->get('details');
+
+
+        if (!empty($id)) {
+            $where_data['id'] = $id;
+        }
+        // if ($status !== '' && $status !== null) {
+        //     $where_data['status'] = $status;
+        // }
+
+        if (!empty($name)) {
+            $where_data['name'] = $name;
+        }
+
+        if (!empty($posted_by)) {
+            $where_data['posted_by'] = $posted_by;
+        }
+
+        if (!empty($where_data)) {
+            $this->db->where($where_data);
+        }
+        if (!empty($from_date)) {
+            $this->db->where('created_at >=', $from_date);
+        }
+
+        if (!empty($to_date)) {
+            $this->db->where('created_at <=', $to_date);
+        }
+
+        if (!empty($designation)) {
+            $where_data['designation'] = $designation;
+        }
+
+        $data['managment_info'] = $this->db->get('managment_info')->result();
+
+        $path = 'admin/management_info/management_info_table';
+
+        $this->engine->render_view($data, $path, $this->side_menu, $this->main_layout);
+    }
+
+
+    public function create_info()
+    {
+        $user = $this->session->userdata('login_user_info_all');
+        $posted_by = $user->username;
+
+        $image = $this->upload_file('image', './assets/uploads/project/management_img/');
+
+
+        $data = array(
+
+            'name' => $this->input->post('name'),
+            'details' => $this->input->post('details'),
+            'designation' => $this->input->post('designation'),
+            'posted_by' => $posted_by,
+            'image' => $image,
+        );
+
+        $this->db->insert('managment_info', $data);
+        $this->session->set_flashdata('success', 'Post created successfully!');
+        redirect('managment_list');
+    }
+
+    public function single_info($id = null)
+    {
+        // Redirect if no ID
+        if (empty($id)) {
+            redirect(base_url('managment_list'));
+        }
+
+        $data = $this->engine->store_nav('managment_info', 'managment_info', 'ব্যবস্থাপনা');
+
+        // Fetch the specific info
+        $data['single_info'] = $this->Common->get_data_single_conditional('managment_info', 'id', $id)->row();
+
+        // Check if info exists
+        if (!$data['single_info']) {
+            show_404();
+        }
+
+        $path = 'admin/management_info/management_info_table';
+        $this->engine->render_view($data, $path, $this->side_menu, $this->main_layout);
+    }
+
+
+     public function update_info()
+    {
+        $id = $this->input->post('info_id');
+        $managment_info = $this->db->get_where('managment_info', ['id' => $id])->row();
+
+        $update_data = [
+            'name' => $this->input->post('name'),
+            'designation' => $this->input->post('designation'),
+            'details' => $this->input->post('details'),
+        ];
+
+        // Handle file uploads
+
+
+        function update_file($field_name, $upload_path, $old_file = '', $allowed_types = '*')
+        {
+            $CI =& get_instance();
+
+            if (!empty($_FILES[$field_name]['name'])) {
+
+                $config['upload_path'] = $upload_path;
+                $config['allowed_types'] = $allowed_types;
+                $config['file_name'] = time() . '_' . $_FILES[$field_name]['name'];
+
+                $CI->load->library('upload');
+                $CI->upload->initialize($config);
+
+                if ($CI->upload->do_upload($field_name)) {
+
+                    $uploadData = $CI->upload->data();
+                    $new_file = $uploadData['file_name'];
+
+                    // delete old file
+                    if (!empty($old_file) && file_exists($upload_path . $old_file)) {
+                        unlink($upload_path . $old_file);
+                    }
+
+                    return $new_file;
+                }
+            }
+
+            return $old_file;
+        }
+
+        $update_data['image'] = update_file(
+            'image',
+            './assets/uploads/project/management_img/',
+            $managment_info->image,
+            'jpg|jpeg|png'
+        );
 
 
 
+        $this->db->where('id', $id);
+        $this->db->update('managment_info', $update_data);
+
+        redirect(base_url('managment_list'));
+    }
+
+
+      public function delete_info($id)
+    {
+        $this->Common->delete_data('managment_info', 'id', $id);
+        redirect('managment_list');
+    }
 
 
 

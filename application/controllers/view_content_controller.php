@@ -66,6 +66,22 @@ class View_content_controller extends CI_Controller
     }
 
 
+    
+     // -----------all management Info--------
+
+    public function get_management_info()
+    {
+        $data['managment_info'] = $this->db->order_by('created_at', 'DESC')
+            ->get('managment_info')
+            ->result_array();
+
+        return $data['managment_info'];
+    }
+
+
+
+
+
 
   
 

@@ -3,7 +3,7 @@
     <div class="content-header">
         <div class="container-fluid">
             <!-- Search / Filter Form -->
-            <form method="get" action="<?= base_url('news_notice_management/news_list') ?>">
+            <form method="get" action="<?= base_url('home_Page_managment_controller/slider_list') ?>">
                 <div class="row g-2 mb-3 align-items-center">
                     <div class="col-md-auto">
                         <button type="button" class="btn btn-primary"><i class="fas fa-search"></i> সদস্য
@@ -11,10 +11,10 @@
                     </div>
                     <div class="col-md">
                         <input type="text" name="id" value="<?= $this->input->get('id') ?>" class="form-control"
-                            placeholder="News ID">
+                            placeholder="Slider ID">
                     </div>
                     <div class="col-md">
-                        <input type="text" name="headline" class="form-control" placeholder="Headline">
+                        <input type="text" name="title" class="form-control" placeholder="title">
                     </div>
 
                     <div class="col-md">
@@ -103,12 +103,12 @@
                                             <a href="javascript:void(0);" class="btn btn-warning btn-sm open-charge-modal"
                                                 data-id="<?= $row->id; ?>"
                                                 data-title="<?= htmlspecialchars($row->title, ENT_QUOTES); ?>"
-                                                data-image="<?= htmlspecialchars($row->image, ENT_QUOTES); ?>">
+                                                >
                                                 Edit Slider
                                             </a>
                                             <a href="<?= base_url('delete_slider/' . $row->id) ?>"
                                                 class="btn btn-danger btn-sm"
-                                                onclick="return confirm('Are you sure you want to delete this news?')">Delete</a>
+                                                onclick="return confirm('Are you sure you want to delete this Slider?')">Delete</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -130,8 +130,8 @@
 
 <!-- ---------------------update popup-------------------------- -->
 
-<?php $this->load->view('admin/slider_table/slider_update_popup'); ?>
 
+<?php $this->load->view('admin/slider_table/slider_update_popup'); ?>
 
 
 
@@ -199,11 +199,9 @@
         $('.open-charge-modal').on('click', function () {
             var id = $(this).data('id');
             var title = $(this).data('title');
-            var image = $(this).data('image');
 
             // Set values in modal
             $('#chargeModal input[name="title"]').val(title);
-            $('#chargeModal textarea[name="details"]').val(image);
 
             // Add hidden input for ID
             if ($('#chargeModal input[name="slider_id"]').length === 0) {
