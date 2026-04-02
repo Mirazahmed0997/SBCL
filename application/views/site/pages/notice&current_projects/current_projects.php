@@ -62,8 +62,35 @@
 
 
 <style>
-    .project-viewport{
-        width: 100%;
-        height: 300px;
-    }
+  .project-viewport {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.project-list-scroll {
+    height: 100%;
+    overflow-y: scroll;
+    scroll-behavior: auto; 
+}
 </style>
+
+
+
+<script>
+    const projectList = document.getElementById('projectList');
+
+    projectList.innerHTML += projectList.innerHTML;
+
+    let scrollSpeed = 1;
+
+    function autoScroll() {
+        projectList.scrollTop += scrollSpeed;
+
+        if (projectList.scrollTop >= projectList.scrollHeight / 2) {
+            projectList.scrollTop = 0;
+        }
+    }
+
+    setInterval(autoScroll, 30);
+</script>

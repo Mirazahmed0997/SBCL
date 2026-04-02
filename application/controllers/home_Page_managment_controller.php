@@ -29,9 +29,7 @@ class home_Page_managment_controller extends CI_Controller
 
     }
 
-
-
-    //   ---------------------------- function for file/image uploads------------------
+    //  ---------------------------- function for file/image uploads------------------
 
 
     private function upload_file($field_name, $file_path)
@@ -403,6 +401,137 @@ class home_Page_managment_controller extends CI_Controller
         redirect('managment_list');
     }
 
+
+
+
+//   ----------------------------banner image--------------------------
+
+
+ public function banner_list()
+    {
+        $data = $this->engine->store_nav('banner_image', 'banner_image', 'ব্যানার');
+
+        $where_data = array();
+
+        $id = $this->input->get('id');
+        $image = $this->input->get('image');
+        $created_at = $this->input->get('created_at');
+        $posted_by = $this->input->get('posted_by');
+
+
+
+        if (!empty($id)) {
+            $where_data['id'] = $id;
+        }
+       
+
+       
+        if (!empty($posted_by)) {
+            $where_data['posted_by'] = $posted_by;
+        }
+
+        if (!empty($where_data)) {
+            $this->db->where($where_data);
+        }
+        if (!empty($from_date)) {
+            $this->db->where('created_at >=', $from_date);
+        }
+
+        if (!empty($to_date)) {
+            $this->db->where('created_at <=', $to_date);
+        }
+
+       
+
+        $data['banner_image'] = $this->db->get('banner_image')->result();
+
+        $path = 'admin/banner_table/banner_table';
+
+        $this->engine->render_view($data, $path, $this->side_menu, $this->main_layout);
+    }
+
+
+     public function single_banner($id = null)
+    {
+        // Redirect if no ID
+        if (empty($id)) {
+            redirect(base_url('banner_list'));
+        }
+
+        $data = $this->engine->store_nav('banner_image', 'banner_image', 'স্লাইডার ');
+
+        // Fetch the specific news
+        $data['single_banner'] = $this->Common->get_data_single_conditional('banner_image', 'id', $id)->row();
+
+        if (!$data['single_banner']) {
+            show_404();
+        }
+
+        
+        $path = 'admin/banner_table/banner_table';
+        $this->engine->render_view($data, $path, $this->side_menu, $this->main_layout);
+    }
+
+
+ public function update_banner()
+    {
+        $id = $this->input->post('banner_id');
+        $banner_image = $this->db->get_where('banner_image', ['id' => $id])->row();
+
+       
+        function update_file($field_name, $upload_path, $old_file = '', $allowed_types = '*')
+        {
+            $CI =& get_instance();
+
+            if (!empty($_FILES[$field_name]['name'])) {
+
+                $config['upload_path'] = $upload_path;
+                $config['allowed_types'] = $allowed_types;
+                $config['file_name'] = time() . '_' . $_FILES[$field_name]['name'];
+
+                $CI->load->library('upload');
+                $CI->upload->initialize($config);
+
+                if ($CI->upload->do_upload($field_name)) {
+
+                    $uploadData = $CI->upload->data();
+                    $new_file = $uploadData['file_name'];
+
+                    // delete old file
+                    if (!empty($old_file) && file_exists($upload_path . $old_file)) {
+                        unlink($upload_path . $old_file);
+                    }
+
+                    return $new_file;
+                }
+            }
+
+            return $old_file;
+        }
+
+        $update_data['image'] = update_file(
+            'image',
+            './assets/uploads/project/banner_image/',
+            $banner_image->image,
+            'jpg|jpeg|png'
+        );
+
+
+
+        $this->db->where('id', $id);
+        $this->db->update('banner_image', $update_data);
+
+        redirect(base_url('banner_list'));
+    }
+
+
+    public function delete_banner($id)
+    {
+        $this->Common->delete_data('banner_image', 'id', $id);
+        redirect('banner_list');
+    }
+
+ 
 
 
 }

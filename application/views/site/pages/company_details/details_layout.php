@@ -4,7 +4,7 @@
             <!-- Company Description -->
             <?php $this->load->view('site/pages/company_details/short_description'); ?>
 
-            <!-- Employee Cards -->
+            <!-- Managment info Cards -->
             <?php $this->load->view('site/pages/company_details/managment_introduction'); ?>
         </div>
     </div>

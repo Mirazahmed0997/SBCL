@@ -102,10 +102,10 @@
                                                 data-id="<?= $row->id; ?>"
                                                 data-headline="<?= htmlspecialchars($row->headline, ENT_QUOTES); ?>"
                                                 data-details="<?= htmlspecialchars($row->details, ENT_QUOTES); ?>">
-                                                Edit News
+                                               <i class="fas fa-edit nav-icon"></i>
                                             </a>
                                             <a href="<?= base_url('delete_news/' . $row->id) ?>"
-                                                class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this news?')">Delete</a>
+                                                class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this news?')"><i class="fas fa-trash nav-icon"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

@@ -104,11 +104,11 @@
                                                 data-id="<?= $row->id; ?>"
                                                 data-title="<?= htmlspecialchars($row->title, ENT_QUOTES); ?>"
                                                 >
-                                                Edit Slider
+                                                <i class="fas fa-edit nav-icon"></i>
                                             </a>
                                             <a href="<?= base_url('delete_slider/' . $row->id) ?>"
                                                 class="btn btn-danger btn-sm"
-                                                onclick="return confirm('Are you sure you want to delete this Slider?')">Delete</a>
+                                                onclick="return confirm('Are you sure you want to delete this Slider?')"><i class="fas fa-trash nav-icon"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

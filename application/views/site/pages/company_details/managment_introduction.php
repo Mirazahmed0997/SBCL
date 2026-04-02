@@ -32,11 +32,6 @@ $managment_info = $this->db->order_by('id', 'asc')
                 </div>
             </div>
         <?php endif; ?>
-
-
-
-
-
     </div>
 </div>
 
@@ -53,35 +48,30 @@ $managment_info = $this->db->order_by('id', 'asc')
         border-radius: 6px 6px 0 0;
     }
 
-    .employees {
-        flex: 1 1 55%;
-        text-align: center;
-        padding: 10px;
-        /* border-top: 1px solid lightblue; */
-        /* box-shadow: 10px 10px 10px lightblue; */
-        box-shadow: 10px 10px 18px rgba(0, 0, 0, 0.12);
+   .employees {
+    flex: 1 1 55%;
+    display: flex;
+    flex-direction: column;   
+    height: 660px;           
+    padding: 10px;
+    box-shadow: 10px 10px 18px rgba(0, 0, 0, 0.12);
+    overflow: hidden;        
+}
 
-    }
+.employees h2 {
+    flex-shrink: 0;
+    margin-bottom: 10px;
+}
 
-    .employees h2 {
-        font-size: 1.8rem;
-        color: #333;
-        margin-bottom: 20px;
-
-
-    }
-
-    .employee-cards {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        max-height: 800px;
-        overflow-y: auto;
-        padding-right: 10px;
-        justify-content: flex-start;
-
-
-    }
+.employee-cards {
+    flex: 1;                 
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-right: 10px;
+    align-content: flex-start; 
+}
 
     .employee-cards::-webkit-scrollbar {
         width: 8px;
@@ -109,7 +99,6 @@ $managment_info = $this->db->order_by('id', 'asc')
     .employee-card img {
         width: 100%;
         height: 300px;
-        /* border-radius: 50%; */
         object-fit: cover;
         margin-bottom: 15px;
     }

@@ -1,113 +1,140 @@
+<?php
+$banner_image = $this->db->order_by('created_at', 'DESC')
+    ->get('banner_image')
+    ->result_array();
+?>
+
 <section class="slider-container">
     <div class="slider">
-        <div class="slide active">
-            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1350&q=80"
-                alt="Slide 1">
-            <div class="slide-content">
-
-            </div>
-        </div>
-        <div class="slide">
-            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1350&q=80"
-                alt="Slide 2">
-            <div class="slide-content">
-
-            </div>
-        </div>
-        <div class="slide">
-            <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1350&q=80"
-                alt="Slide 3">
-            <div class="slide-content">
-
-            </div>
-        </div>
+        <?php if (!empty($banner_image)): ?>
+            <?php foreach ($banner_image as $index => $row): ?>
+                <div class="slide <?= $index === 0 ? 'active' : '' ?>">
+                    <img src="<?= base_url('assets/uploads/project/banner_image/' . $row['image']) ?>" alt="Slide <?= $index + 1 ?>">
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No banners available</p>
+        <?php endif; ?>
     </div>
 
     <div class="slider-dots">
-        <span class="dot active" onclick="currentSlide(0)"></span>
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
+        <?php foreach ($banner_image as $index => $row): ?>
+            <span class="dot <?= $index === 0 ? 'active' : '' ?>" onclick="showSlide(<?= $index ?>)"></span>
+        <?php endforeach; ?>
     </div>
 </section>
 
+<script>
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    let currentIndex = 0;
+    const slideInterval = 4000;
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+            dots[i].classList.toggle('active', i === index);
+        });
+        currentIndex = index;
+    }
+
+    function nextSlide() {
+        const nextIndex = (currentIndex + 1) % slides.length;
+        showSlide(nextIndex);
+    }
+
+    let auto = setInterval(nextSlide, slideInterval);
+
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            showSlide(i);
+            clearInterval(auto);
+            auto = setInterval(nextSlide, slideInterval);
+        });
+    });
+</script>
+
 
 <style>
+    .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        z-index: 0;
+    }
+
+    .slide.active {
+        opacity: 1;
+        z-index: 1;
+    }
+
+    .slider-dots {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+    }
+
+    .slider-dots .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .slider-dots .dot.active {
+        background: rgba(255, 255, 255, 1);
+    }
+
+
     .slider-container {
-    width: 100%;
-    max-width: 1200px;
-    height: 400px;
-    margin: 0 auto;
-    padding: 0 10px; 
-}
-
-.slider {
-    width: 100%;
-    height: 400px; 
-    overflow: hidden;
-    border-radius: 8px;
-    position: relative;
-}
-
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-}
-
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-    .slider {
-        height: 350px;
+        width: 100%;
+        max-width: 1200px;
+        height: 400px;
+        margin: 0 auto;
+        padding: 0 10px;
     }
-}
 
-@media (max-width: 768px) {
     .slider {
-        height: 300px;
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+        border-radius: 8px;
+        position: relative;
     }
-}
 
-@media (max-width: 480px) {
-    .slider {
-        height: 220px; /* smaller height for small screens */
+    .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
     }
-}
+
+    @media (max-width: 1024px) {
+        .slider {
+            height: 350px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .slider {
+            height: 300px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .slider {
+            height: 220px;
+        }
+    }
 </style>
 
-
-<!-- <section class="slider-container">
-        <div class="slider">
-            <div class="slide active">
-                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1350&q=80" alt="Slide 1">
-                <div class="slide-content">
-                    <h1>সমবায়ের শক্তি, বাংলাদেশের সমৃদ্ধি</h1>
-                    <p>বাংলাদেশ সমবায় ইউনিয়ন সমবায়ীদের অধিকার আদায়ে অঙ্গীকারবদ্ধ।</p>
-                    <a href="#contact" class="cta-button">যোগদান করুন</a>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1350&q=80" alt="Slide 2">
-                <div class="slide-content">
-                    <h1>নারীর ক্ষমতায়নে সমবায়</h1>
-                    <p>তৃণমূল নারীদের অর্থনৈতিক স্বাবলম্বিতা নিশ্চিত করতে আমাদের বিশেষ উদ্যোগ।</p>
-                    <a href="#" class="cta-button">সফলতার গল্প</a>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1350&q=80" alt="Slide 3">
-                <div class="slide-content">
-                    <h1>কৃষি ও আধুনিক সমবায়</h1>
-                    <p>আধুনিক প্রযুক্তি ব্যবহারের মাধ্যমে কৃষি উৎপাদন বৃদ্ধিতে আমাদের সহায়তা।</p>
-                    <a href="#" class="cta-button">প্রশিক্ষণ নিন</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="slider-dots">
-            <span class="dot active" onclick="currentSlide(0)"></span>
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-        </div>
-    </section> -->

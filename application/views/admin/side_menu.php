@@ -56,6 +56,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="<?php echo base_url('slider_list') ?>"
+                                class="nav-link <?= active_nav('applicant_pending_list', $sub_nav); ?>">
+                                <i class="fas fa-newspaper nav-icon"></i>
+                                <p>সংবাদ ছবি</p>
+
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="<?php echo base_url('notice_list') ?>"
                                 class="nav-link <?= active_nav('applicant_pending_list', $sub_nav); ?>">
                                 <i class="fas fa-newspaper nav-icon"></i>
@@ -64,13 +72,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php echo base_url('slider_list') ?>"
+                            <a href="<?php echo base_url('banner_list') ?>"
                                 class="nav-link <?= active_nav('applicant_pending_list', $sub_nav); ?>">
                                 <i class="fas fa-newspaper nav-icon"></i>
-                                <p>স্লাইডার</p>
+                                <p>ব্যানার</p>
 
                             </a>
                         </li>
+
                         <li class="nav-item">
                             <a href="<?php echo base_url('managment_list') ?>"
                                 class="nav-link <?= active_nav('applicant_pending_list', $sub_nav); ?>">
@@ -96,7 +105,7 @@
                 </a>
 
                 </li>
-                 <li class="nav-item has-treeview <?= active_open('applicant', $main_nav); ?>">
+                <li class="nav-item has-treeview <?= active_open('applicant', $main_nav); ?>">
                     <a href="#" class="nav-link <?= active_nav('applicant', $main_nav); ?>">
                         <i class="nav-icon fas fa-user"></i>
                         <p>

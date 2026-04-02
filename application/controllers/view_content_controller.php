@@ -14,17 +14,7 @@ class View_content_controller extends CI_Controller
   
 
 
-    // -----------all active new--------
-
-    public function get_active_news()
-    {
-        $data['news'] = $this->db->order_by('created_at', 'DESC')
-            ->where('status', 1)
-            ->get('news')
-            ->result_array();
-
-        return $data['news'];
-    }
+   
 
     // -------------------news details------------
     public function news_details($id = null)
@@ -46,17 +36,7 @@ class View_content_controller extends CI_Controller
     }
 
 
-      // -----------all active notice--------
-
-    public function get_active_notice()
-    {
-        $data['notices'] = $this->db->order_by('created_at', 'DESC')
-            ->where('status', 1)
-            ->get('notices')
-            ->result_array();
-
-        return $data['notices'];
-    }
+    
 
      // -------------------news details------------
     public function notice_details($id = null)
@@ -82,19 +62,8 @@ class View_content_controller extends CI_Controller
     {
         $this->load->view('site/pages/company_details/details_description');
     }
-     // -----------all active slider--------
 
-    public function get_active_slider()
-    {
-        $data['image_slider'] = $this->db->order_by('created_at', 'DESC')
-            ->where('status', 1)
-            ->get('image_slider')
-            ->result_array();
-
-        return $data['image_slider'];
-    }
-     // -----------all management Info--------
-
+   
     public function get_management_info()
     {
         $data['managment_info'] = $this->db->order_by('created_at', 'DESC')

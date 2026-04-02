@@ -31,6 +31,15 @@ $route['members_account_details_admin'] = 'Admin/members_account';
 
 
 
+// --------------for user home page view ----------------------
+
+$route['view_all_news'] = 'View_content_controller/view_news';
+$route['company_details'] = 'View_content_controller/details_description';
+$route['news_details/(:num)'] = 'View_content_controller/news_details/$1';
+$route['notice_details/(:num)'] = 'View_content_controller/notice_details/$1';
+$route['management_details/(:num)'] = 'View_content_controller/mamagement_details/$1';
+
+
 
 // -----------------------News managment------------------------
 
@@ -46,19 +55,6 @@ $route['update_notice_status/(:num)'] = 'news_notice_management/notice_active_st
 $route['delete_notice/(:num)'] = 'news_notice_management/delete_notice/$1';
 
 
-
-
-// --------------for user home page view ----------------------
-
-$route['view_all_news'] = 'View_content_controller/view_news';
-$route['company_details'] = 'View_content_controller/details_description';
-$route['news_details/(:num)'] = 'View_content_controller/news_details/$1';
-$route['notice_details/(:num)'] = 'View_content_controller/notice_details/$1';
-$route['management_details/(:num)'] = 'View_content_controller/mamagement_details/$1';
-
-
-
-
 // ---------------------Slider managment----------------------
 
 
@@ -70,6 +66,17 @@ $route['delete_slider/(:num)'] = 'home_Page_managment_controller/delete_slider/$
 
 $route['managment_list'] = 'home_Page_managment_controller/managment_list';
 $route['delete_info/(:num)'] = 'home_Page_managment_controller/delete_info/$1';
+
+
+
+// --------------------------banner list----------------------------
+$route['banner_list'] = 'home_Page_managment_controller/banner_list';
+// $route['update_banner/(:num)'] = 'home_Page_managment_controller/banner_list/$1';
+$route['delete_banner/(:num)'] = 'home_Page_managment_controller/delete_banner/$1';
+
+
+
+
 
 // --------------------Member Registration----------------------
 
