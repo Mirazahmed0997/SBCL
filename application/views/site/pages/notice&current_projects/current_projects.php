@@ -6,7 +6,7 @@ $current_projects = $this->db->order_by('created_at', 'DESC')
 ?>
 
 <div class="current-projects">
-    <h3><i class="fas fa-tasks"></i> চলমান প্রকল্প</h3>
+    <h3><i class="fas fa-tasks"></i> বিজ্ঞপ্তি</h3>
     <div class="project-viewport">
         <div class="project-list-scroll" id="projectList">
 

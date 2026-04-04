@@ -6,12 +6,12 @@
 
 <?php $this->load->view('site/pages/company_details/details_layout'); ?>
 
+<?php $this->load->view('site/pages/homepage_layouts/layout2'); ?>
 
 <?php $this->load->view('site/pages/achievements/achievements_history'); ?>
 
+<?php $this->load->view('site/pages/homepage_layouts/layout3'); ?>
 
-<?php $this->load->view('site/pages/development_work/development_work'); ?>
-<?php $this->load->view('site/pages/gallary/gallary'); ?>
 
 
 

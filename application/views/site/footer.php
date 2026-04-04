@@ -2,10 +2,16 @@
     <div class="footer-container">
         <div class="footer-grid">
             <div class="company-info">
-                <h2 class="company-title">MarketingPro</h2>
-                <p class="company-description">
-                    Transforming businesses through innovative digital marketing strategies. We help brands grow and
-                    succeed in the digital age.
+                <div class="footer-logo">
+                    <a href="<?= base_url(); ?>">
+                        <img src="<?= base_url('assets/uploads/project/members/logo/91a0505bc70a4089f271d1f87c828ad0.png'); ?>"
+                            alt="BJSU Logo">
+                    </a>
+                </div>
+                <h6 class="comh5any-description">
+                    বাংলাদেশ জাতীয় সমবায় ইউনিয়ন
+                </h6>
+                <p>৯/ডি, মতিঝিল বাণিজ্যিক এলাকা, ঢাকা-১০০০, বাংলাদেশ।
                 </p>
                 <div class="social-links">
                     <a href="#" class="social-link" aria-label="Visit our Facebook page">
@@ -23,28 +29,30 @@
                 </div>
             </div>
             <div class="footer-section">
-                <h3>Services</h3>
+                <h3>ডিজিটাল সেবা</h3>
                 <ul class="footer-links">
-                    <li><a href="#" class="footer-link">Digital Strategy</a></li>
-                    <li><a href="#" class="footer-link">Content Marketing</a></li>
-                    <li><a href="#" class="footer-link">SEO Optimization</a></li>
-                    <li><a href="#" class="footer-link">Social Media</a></li>
-                    <li><a href="#" class="footer-link">Analytics & Reports</a></li>
+                    <li><a href="#" class="footer-link">প্রশিক্ষণ</a></li>
+                    <li><a href="#" class="footer-link">অনলাইন নিবন্ধন</a></li>
+                    <li><a href="#" class="footer-link">সদস্য যাচাইকরণ</a></li>
+                    <li><a href="#" class="footer-link">ই-লাইব্রেরি</a></li>
+                    <li><a href="#" class="footer-link">অভিযোগ প্রতিকার (GRS)</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Company</h3>
+                <h3>প্রতিষ্ঠান</h3>
                 <ul class="footer-links">
-                    <li><a href="#" class="footer-link">About Us</a></li>
-                    <li><a href="#" class="footer-link">Careers</a></li>
-                    <li><a href="#" class="footer-link">Case Studies</a></li>
-                    <li><a href="#" class="footer-link">Blog</a></li>
-                    <li><a href="#" class="footer-link">Contact</a></li>
+                    <li><a href="#" class="footer-link">আমাদের সম্পর্কে</a></li>
+                    <li><a href="#" class="footer-link">কার্যক্রম ও প্রকল্প </a></li>
+                    <li><a href="#" class="footer-link">আইন ও বিধিমালা</a></li>
+                    <li><a href="#" class="footer-link">আন্তর্জাতিক</a></li>
+                    <li><a href="#" class="footer-link">মিডিয়া </a></li>
+                    <li><a href="#" class="footer-link">নিয়োগ বিজ্ঞপ্তি</a></li>
+
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Stay Updated</h3>
-                <p class="newsletter-description">Subscribe to our newsletter for the latest marketing insights.</p>
+                <h3>সাথে থাকুন</h3>
+                <!-- <p class="newsletter-description">Subscribe to our newsletter for the latest marketing insights.</p> -->
                 <form class="newsletter-form">
                     <div>
                         <input type="email" id="email" name="email" required class="email-input"
@@ -79,6 +87,11 @@
 
 
 <style>
+    .footer-logo img {
+        max-height: 100px;
+        width: auto;
+    }
+
     /* CSS Custom Properties */
     :root {
         --color-white: #ffffff;

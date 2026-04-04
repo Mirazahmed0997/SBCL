@@ -44,8 +44,11 @@
                                         <i class="fas fa-lock"></i>
                                     </span>
                                 </div>
-                                <input type="password" name="password" class="form-control" placeholder="পাসওয়ার্ড"
+                                <input type="password" name="password" id="password" class="form-control" placeholder="পাসওয়ার্ড"
                                     required>
+                                <i class="fa fa-eye" onclick="togglePassword('password', this)"
+                                    style="position:absolute; right:10px; top:10px; cursor:pointer;">
+                                </i>
                             </div>
                         </div>
 
@@ -84,3 +87,20 @@
 </div>
 
 
+<script>
+     function togglePassword(fieldId, icon) {
+
+        var input = document.getElementById(fieldId);
+
+        if (input.type === "password") {
+            input.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+        } else {
+            input.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+        }
+
+    }
+</script>

@@ -29,8 +29,10 @@
 
 
 <style>
-    .hero-modern-business {
-       
+    .hero-modern-business__desc {
+        text-align: justify;
+        text-justify: inter-word;
+        line-height: 1.8;
     }
 
     .hero-modern-business__image-wrapper {
