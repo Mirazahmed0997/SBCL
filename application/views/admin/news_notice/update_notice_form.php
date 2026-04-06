@@ -8,7 +8,7 @@
             <form action="<?= base_url('news_notice_management/update_notice'); ?>" method="post" enctype="multipart/form-data">
 
                 <div class="modal-header">
-                    <h5 class="modal-title">Update News</h5>
+                    <h5 class="modal-title">Change Image</h5>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 

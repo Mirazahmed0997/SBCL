@@ -11,16 +11,24 @@ $managment_info = $this->db->order_by('id', 'asc')
     <div class="employee-cards">
         <?php if (!empty($managment_info)): ?>
             <?php foreach ($managment_info as $info): ?>
+
                 <div class="employee-card">
                     <img src="<?= base_url('./assets/uploads/project/management_img/' . $info['image']) ?>" alt="Jane Smith">
-                    <h3><?= htmlspecialchars($info['name']) ?></h3>
-                    <p class="designation"><?= htmlspecialchars($info['designation']) ?></p>
-                    <p class="details">
+                   <div class="card-body" style="padding: 10px;box-shadow: 10px 10px 18px rgba(0, 0, 0, 0.12);">
+                     <p style="font-size: 14px; line-height: 1.1;"><?= htmlspecialchars($info['name']) ?></p>
+                    <p style="font-size: 14px;" class=" designation"><?= htmlspecialchars($info['designation']) ?></p>
+                    <p class="details" style="font-size: 14px; line-height: 1.1;">
                         <?= htmlspecialchars(mb_substr($info['details'], 0, 50)) ?>
                         <?= mb_strlen($info['details']) > 50 ? '...' : '' ?>
                     </p>
-                    <a href="<?= base_url('management_details/' . $info['id']); ?>" class="dashed-link">বিস্তারিত</a>
+                    <a style="font-size: 14px; line-height: 1.1;" href="<?= base_url('management_details/' . $info['id']); ?>"
+                        class="dashed-link">বিস্তারিত</a>
+                   </div>
                 </div>
+
+
+
+
             <?php endforeach; ?>
         <?php else: ?>
             <div class="swiper-slide">
@@ -48,30 +56,30 @@ $managment_info = $this->db->order_by('id', 'asc')
         border-radius: 6px 6px 0 0;
     }
 
-   .employees {
-    flex: 1 1 55%;
-    display: flex;
-    flex-direction: column;   
-    height: 660px;           
-    padding: 10px;
-    box-shadow: 10px 10px 18px rgba(0, 0, 0, 0.12);
-    overflow: hidden;        
-}
+    .employees {
+        flex: 1 1 55%;
+        display: flex;
+        flex-direction: column;
+        height: 660px;
+        padding: 10px;
+        box-shadow: 10px 10px 18px rgba(0, 0, 0, 0.12);
+        overflow: hidden;
+    }
 
-.employees h2 {
-    flex-shrink: 0;
-    margin-bottom: 10px;
-}
+    .employees h2 {
+        flex-shrink: 0;
+        margin-bottom: 10px;
+    }
 
-.employee-cards {
-    flex: 1;                 
-    overflow-y: auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding-right: 10px;
-    align-content: flex-start; 
-}
+    .employee-cards {
+        flex: 1;
+        overflow-y: auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding-right: 10px;
+        align-content: flex-start;
+    }
 
     .employee-cards::-webkit-scrollbar {
         width: 8px;
@@ -86,11 +94,11 @@ $managment_info = $this->db->order_by('id', 'asc')
         flex: 0 0 calc(50% - 10px);
         max-width: calc(50% - 10px);
         background: #9ab6ba;
-        border-radius: 10px;
+        /* border-radius: 10px; */
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        padding: 20px;
+        /* padding: 5px; */
         text-align: center;
-        
+
     }
 
     .employee-card:hover {
@@ -99,9 +107,9 @@ $managment_info = $this->db->order_by('id', 'asc')
 
     .employee-card img {
         width: 100%;
-        height: 300px;
+        height: 310px;
         object-fit: cover;
-        margin-bottom: 15px;
+        margin-bottom: 6px;
     }
 
     .employee-card h3 {
@@ -122,3 +130,20 @@ $managment_info = $this->db->order_by('id', 'asc')
         color: #555;
     }
 </style>
+
+
+
+
+<!-- <div class="card" style="width: 18rem;">
+                    <img src="<?= base_url('./assets/uploads/project/management_img/' . $info['image']) ?>" class="card-img-top"
+                        alt="...">
+                    <div class="card-body">
+                        <p  style="font-size:10px"><?= htmlspecialchars($info['name']) ?></p>
+                        <p style="font-size:14px" class="designation"><?= htmlspecialchars($info['designation']) ?></p>
+                        <p class="details"m style="font-size:12px">
+                            <?= htmlspecialchars(mb_substr($info['details'], 0, 50)) ?>
+                            <?= mb_strlen($info['details']) > 50 ? '...' : '' ?>
+                        </p>
+                        <a style="font-size:12px" href="<?= base_url('management_details/' . $info['id']); ?>" class="dashed-link">বিস্তারিত</a>
+                    </div>
+                </div> -->

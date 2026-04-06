@@ -86,6 +86,17 @@ $route['delete_achievement/(:num)'] = 'home_Page_managment_controller/delete_ach
 $route['achievement_active_status/(:num)'] = 'home_Page_managment_controller/achievement_active_status/$1';
 
 
+// ------------------------gallary list----------------------------
+
+$route['image_gallery_list'] = 'gallary_controller/image_gallery_list';
+$route['all_images'] = 'gallary_controller/all_images';
+$route['image_active_status/(:num)'] = 'gallary_controller/image_active_status/$1';
+$route['delete_image/(:num)'] = 'gallary_controller/delete_image/$1';
+
+
+
+
+
 
 
 // --------------------Member Registration----------------------

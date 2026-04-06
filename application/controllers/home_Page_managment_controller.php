@@ -254,7 +254,7 @@ class home_Page_managment_controller extends CI_Controller
     }
 
 
-    // ---------------------delete news-----------------
+    // ---------------------delete achievement-----------------
 
     public function delete_achievement($id)
     {
