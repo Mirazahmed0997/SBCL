@@ -28,7 +28,6 @@ class Member_login extends CI_Controller
     public function index()
     {
         $data = $this->engine->store_nav('recruitment', 'Nothing', 'শিক্ষিত বেকার কেন্দ্রীয় সঞ্চয় ও ঋণদান সমবায় সমিতি');
-        $data['homapage_info'] = $this->Common->get_data('job_homepage')->row();
 
         $path = 'site/pages/login';
         $this->engine->render_front_view($data, $path, $this->header, $this->footer, $this->main_layout);

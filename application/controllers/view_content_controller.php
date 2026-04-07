@@ -96,8 +96,6 @@ class View_content_controller extends CI_Controller
 
 
 
-
-
   
 
 

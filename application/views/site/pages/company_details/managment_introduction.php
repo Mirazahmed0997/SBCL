@@ -14,16 +14,16 @@ $managment_info = $this->db->order_by('id', 'asc')
 
                 <div class="employee-card">
                     <img src="<?= base_url('./assets/uploads/project/management_img/' . $info['image']) ?>" alt="Jane Smith">
-                   <div class="card-body" style="padding: 10px;box-shadow: 10px 10px 18px rgba(0, 0, 0, 0.12);">
-                     <p style="font-size: 14px; line-height: 1.1;"><?= htmlspecialchars($info['name']) ?></p>
-                    <p style="font-size: 14px;" class=" designation"><?= htmlspecialchars($info['designation']) ?></p>
-                    <p class="details" style="font-size: 14px; line-height: 1.1;">
-                        <?= htmlspecialchars(mb_substr($info['details'], 0, 50)) ?>
-                        <?= mb_strlen($info['details']) > 50 ? '...' : '' ?>
-                    </p>
-                    <a style="font-size: 14px; line-height: 1.1;" href="<?= base_url('management_details/' . $info['id']); ?>"
-                        class="dashed-link">বিস্তারিত</a>
-                   </div>
+                    <div class="card-body" style="padding: 10px;box-shadow: 10px 10px 18px rgba(0, 0, 0, 0.12);">
+                        <p style="font-size: 14px; line-height: 1.1;"><?= htmlspecialchars($info['name']) ?></p>
+                        <p style="font-size: 14px;" class=" designation"><?= htmlspecialchars($info['designation']) ?></p>
+                        <p class="details" style="font-size: 14px; line-height: 1.1;">
+                            <?= htmlspecialchars(mb_substr($info['details'], 0, 50)) ?>
+                            <?= mb_strlen($info['details']) > 50 ? '...' : '' ?>
+                        </p>
+                        <a style="font-size: 14px; line-height: 1.1;"
+                            href="<?= base_url('management_details/' . $info['id']); ?>" class="dashed-link">বিস্তারিত</a>
+                    </div>
                 </div>
 
 
@@ -128,6 +128,44 @@ $managment_info = $this->db->order_by('id', 'asc')
     .employee-card .details {
         font-size: 0.9rem;
         color: #555;
+    }
+
+
+    /* Small devices (phones) */
+    @media (max-width: 575.98px) {
+        .employees {
+            flex: 1 1 100%;
+            height: auto;
+            padding: 5px;
+        }
+
+        .employee-card.employee-card {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding: 5px;
+        }
+
+        .employee-card img {
+            height: 300px;
+        }
+
+        .employees .section-title {
+            font-size: 18px;
+            padding: 10px;
+        }
+    }
+
+    /* Medium devices (tablets) */
+    @media (min-width: 576px) and (max-width: 767.98px) {
+        .employee-card.employee-card {
+            flex: 0 0 calc(50% - 10px);
+            max-width: calc(50% - 10px);
+            padding: 5px;
+        }
+
+        .employee-card img {
+            height: 300px;
+        }
     }
 </style>
 

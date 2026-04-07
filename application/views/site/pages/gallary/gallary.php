@@ -1,6 +1,6 @@
 <?php
 $image_gallery = $this->db->order_by('id', 'asc')
-    ->where('status',1)
+    ->where('status', 1)
     ->limit(8)
     ->get('image_gallery')
     ->result_array();
@@ -36,10 +36,12 @@ $image_gallery = $this->db->order_by('id', 'asc')
             </div>
         <?php endif; ?>
 
-        <div class="more-btn">
-            <a href="all_images">আরো দেখুন</a>
-        </div>
 
+
+    </div>
+
+    <div class="more-btn">
+        <a href="all_images">আরো দেখুন</a>
     </div>
 
     <!-- Lightbox -->
@@ -65,23 +67,21 @@ $image_gallery = $this->db->order_by('id', 'asc')
         border-radius: 4px;
         margin-bottom: 10px;
     }
-    .more-btn {
-        color: #fff;
+
+    .more-btn  {
         text-align: center;
+        padding: 6px;
     }
 
-    /* GRID SYSTEM */
     .gallery-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 10px;
     }
 
-    /* ITEM */
     .gallery-item {
         width: 100%;
         aspect-ratio: 1 / 1;
-        /* PERFECT SQUARE */
         overflow: hidden;
         border-radius: 10px;
         cursor: pointer;
@@ -98,7 +98,6 @@ $image_gallery = $this->db->order_by('id', 'asc')
         transform: scale(1.1);
     }
 
-    /* LIGHTBOX */
     .lightbox {
         position: fixed;
         top: 0;
@@ -118,23 +117,19 @@ $image_gallery = $this->db->order_by('id', 'asc')
         border-radius: 10px;
     }
 
-    /* RESPONSIVE */
 
-    /* Tablet */
     @media (max-width: 992px) {
         .gallery-grid {
             grid-template-columns: repeat(3, 1fr);
         }
     }
 
-    /* Mobile */
     @media (max-width: 600px) {
         .gallery-grid {
             grid-template-columns: repeat(2, 1fr);
         }
     }
 
-    /* Small mobile */
     @media (max-width: 400px) {
         .gallery-grid {
             grid-template-columns: 1fr;

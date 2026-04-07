@@ -5,6 +5,8 @@ $image_gallery = $this->db->order_by('id', 'asc')
     ->result_array();
 ?>
 
+<title>All Images</title>
+
 <section class="py-5 bg-light">
     <div class="container">
 

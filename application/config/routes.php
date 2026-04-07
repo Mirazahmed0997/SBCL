@@ -124,7 +124,6 @@ $route['update_member/(:id)'] = 'Site/update_member/$1';
 
 // ---------------------managment details-------------------
 
-// $route['management_details'] = 'Applicant/members_account';
 
 
 

@@ -74,7 +74,7 @@
                         <li class="nav-item">
                             <a href="<?php echo base_url('projects_list') ?>"
                                 class="nav-link <?= active_nav('applicant_pending_list', $sub_nav); ?>">
-                                <i class="fas fa-newspaper nav-icon"></i>
+                                <i class="fas fa-industry nav-icon"></i>
                                 <p>প্রজেক্টস</p>
 
                             </a>
@@ -82,7 +82,7 @@
                         <li class="nav-item">
                             <a href="<?php echo base_url('banner_list') ?>"
                                 class="nav-link <?= active_nav('applicant_pending_list', $sub_nav); ?>">
-                                <i class="fas fa-newspaper nav-icon"></i>
+                                <i class="fas fa-image banner-icon" style="  margin-right: 12px; margin-left: 4px;"></i>
                                 <p>ব্যানার</p>
 
                             </a>
@@ -91,7 +91,7 @@
                         <li class="nav-item">
                             <a href="<?php echo base_url('managment_list') ?>"
                                 class="nav-link <?= active_nav('applicant_pending_list', $sub_nav); ?>">
-                                <i class="fas fa-newspaper nav-icon"></i>
+                                <i class="fas fa-users nav-icon"></i>
                                 <p>ব্যবস্থাপক</p>
 
                             </a>
@@ -99,19 +99,51 @@
                         <li class="nav-item">
                             <a href="<?php echo base_url('achievements_list') ?>"
                                 class="nav-link <?= active_nav('applicant_pending_list', $sub_nav); ?>">
-                                <i class="fas fa-newspaper nav-icon"></i>
+                                <i class="fas fa-medal achievement-icon" style="  margin-right: 14px; margin-left: 4px;"></i>
                                 <p>অর্জন</p>
 
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="<?php echo base_url('image_gallery_list') ?>"
-                                class="nav-link <?= active_nav('applicant_pending_list', $sub_nav); ?>">
-                                <i class="fas fa-newspaper nav-icon"></i>
-                                <p>ইমেজ গ্যালারি</p>
 
+
+
+                        <!-- sub menu for gallary -->
+
+                        <li class="nav-item has-treeview <?= ($sub_nav == 'gallery') ? 'menu-open' : ''; ?>">
+
+                            <a href="#" class="nav-link <?= ($sub_nav == 'gallery') ? 'active' : ''; ?>">
+                                <i class="fas fa-newspaper nav-icon"></i>
+                                <p>
+                                    গ্যালারি
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
                             </a>
+
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="<?= base_url('image_gallery_list') ?>"
+                                        class="nav-link <?= active_nav('image_gallery_list', $sub_nav); ?>">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>ইমেজ তালিকা</p>
+                                    </a>
+                                </li>
+
+                                <!-- <li class="nav-item">
+                                    <a href="<?= base_url('image_gallery_create') ?>"
+                                        class="nav-link <?= active_nav('image_gallery_create', $sub_nav); ?>">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>নতুন গ্যালারি যোগ</p>
+                                    </a>
+                                </li> -->
+
+                            </ul>
+
                         </li>
+
+
+
+
                     </ul>
                 </li>
 
