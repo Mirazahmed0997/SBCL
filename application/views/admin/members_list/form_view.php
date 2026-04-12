@@ -1,13 +1,14 @@
 <div class="content-wrapper">
     <div class="content-header" style="color: #800000;">
         <div class="container-fluid">
-            <div class="d-flex justify-content-end align-items-center mb-3">
-                <button onclick="window.print()" class="btn btn-danger">
-                    <i class="fas fa-print"></i> Print
-                </button>
-            </div>
+
 
             <div class="card shadow-sm p-4 mb-4">
+                <div class="d-flex justify-content-end align-items-center mb-3">
+                    <button onclick="window.print()" class="btn btn-danger">
+                        <i class="fas fa-print"></i> Print
+                    </button>
+                </div>
                 <div class="header mb-3 d-flex justify-content-center"
                     style="border-bottom:2px solid #800000; padding-bottom:10px;">
                     <div class="d-flex align-items-center">
@@ -67,6 +68,12 @@
                     আমরা বাংলাদেশ জাতীয় সমবায় ইউনিয়ন এর উপ-আইন, সমবায় সমিতি আইন, ২০০১ (সংশোধিত ২০০২,২০১৩) ও সমবায় সমিতি
                     বিধিমালা, ২০০৪ (সংশোধিত ২০২০) মানিয়া চলিতে সম্মত আছি।
                 </p>
+                <p style="text-align:justify;font-size:12px;">
+                    আপনার অবগতি ও প্রয়োজনীয় ব্যবস্থা গ্রহণের জন্যে সমিতির তথ্যাবলী পেশ করা হইলো । এতদঙ্গে
+                    <strong><?= $member->sarok_date ?></strong> ইং তারিখে অনুষ্ঠিত ব্যবস্থাপনা কমিটির সভায় গৃহীত সদস্যপদ
+                    প্রার্থনা সম্পর্কিত সভার কার্যবিবরণী (সভাপতি/সম্পাদক কর্তৃক সত্যায়িত) কপিসহ সমিতির তথ্যাদি নিম্নে
+                    উপস্থাপন করলাম
+                </p>
 
                 <div class="section-list" style="font-size:12px;">
                     <?php
@@ -95,15 +102,15 @@
                         <p style="font-size:12px;">সমিতির সীলমোহর</p>
                     </div>
 
-                    <div style="width:300px;text-align:center;font-size:12px; lh-1;">
+                    <div style="width:300px; text-align:left; font-size:12px; ;">
                         <p style="font-weight:bold;">আপনার বিশ্বস্ত</p>
-                        <p>সমিতির পক্ষে মনোনীত সদস্যের নাম ও স্বাক্ষর</p>
-                        <div style="display:flex;gap:5px;align-items:center;justify-content:center;">
+                        <span>সমিতির পক্ষে মনোনীত সদস্যের নাম ও স্বাক্ষর</span>
+                        <div style="text-align:left;">
                             <span>(০১) স্বাক্ষর</span>
                             <img src="<?= base_url('assets/uploads/project/members/nominee_sign/' . $member->nomini_sign) ?>"
                                 width="60">
                         </div>
-                        <div class="text-start lh-sm" style="font-size:12px;">
+                        <div style="text-align: left" class=" lh-sm" style="font-size:12px;">
                             <p class="mb-1 text-start">নাম : <strong><?= $member->name ?></strong></p>
                             <p class="mb-1 text-start">পদবী : <strong><?= $member->association_designation ?></strong>
                             </p>
@@ -123,9 +130,40 @@
 
 
 
+<style>
+    @media print {
+
+        .content-wrapper {
+            overflow: visible !important;
+            padding: 20px;
+        }
+
+        .content-wrapper,
+        .content-header,
+        .container-fluid,
+        .card {
+            display: block !important;
+            position: static !important;
+            overflow: visible !important;
+            /* height: auto !important; */
+            /* padding-top: 50px; */
+        }
+
+        .card {
+            height: 1200px;
+            width: 100%;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 20px;
+        }
 
 
 
+        .btn {
+            display: none !important;
+        }
+    }
+</style>
 
 
 

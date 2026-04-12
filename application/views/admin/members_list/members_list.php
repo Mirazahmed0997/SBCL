@@ -189,6 +189,65 @@
 
 
 
+<style>
+    @media print {
+
+        thead {
+            display: table-header-group !important;
+        }
+
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse !important;
+            white-space: normal !important;
+            font-size: 9px;
+            page-break-inside: auto;
+        }
+
+        thead th {
+            color: #000 !important;
+            background: #fff !important;
+            
+            border: 1px solid #000 !important;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #000 !important;
+            padding: 5px !important;
+            font-size: 10px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        tr {
+            page-break-inside: avoid;
+            page-break-after: auto;
+        }
+
+        .btn,
+        .open-charge-modal,
+        .active-button,
+        a {
+            display: none !important;
+        }
+
+        table th:last-child,
+        table td:last-child {
+            display: none !important;
+        }
+
+        .table-responsive {
+            overflow: visible !important;
+        }
+
+       
+    }
+</style>
 
 
 

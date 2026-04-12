@@ -129,12 +129,36 @@ $banner_image = $this->db->order_by('created_at', 'DESC')
         .slider {
             height: 300px;
         }
+         .slide img {
+        width: 100%;
+        height: fit-content;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+    }
+    .slider-container {
+        width: 100%;
+        height: fit-content;
+        margin: 0 auto;
+    }
     }
 
     @media (max-width: 480px) {
         .slider {
             height: 220px;
         }
+         .slide img {
+        width: 100%;
+        height: fit-content;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+    }
+    .slider-container {
+        width: 100%;
+        height: fit-content;
+        margin: 0 auto;
+    }
     }
 </style>
 

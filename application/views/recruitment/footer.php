@@ -90,6 +90,8 @@
     .footer-logo img {
         max-height: 100px;
         width: auto;
+        background-color: white;
+        border-radius: 50%;
     }
 
     /* CSS Custom Properties */

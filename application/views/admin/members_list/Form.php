@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>সদস্য পদের আবেদন ফরম</title>
     <link rel="stylesheet" href="preview.css">
-    <style>
+    <!-- <style>
         body {
             background: #eee;
             display: flex;
@@ -123,7 +123,7 @@
                 display: none !important;
             }
         }
-    </style>
+    </style> -->
 
 </head>
 

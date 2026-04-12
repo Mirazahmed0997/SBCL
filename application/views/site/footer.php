@@ -89,8 +89,11 @@
 <style>
     .footer-logo img {
         max-height: 100px;
+
         width: auto;
     }
+
+    
 
     /* CSS Custom Properties */
     :root {
