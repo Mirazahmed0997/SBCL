@@ -17,7 +17,7 @@
 
     <div class="sticky-header-container">
 
-        <header>
+        <header style="padding: 0% !important;">
             <?php $this->load->view('site/pages/navbar'); ?>
         </header>
 

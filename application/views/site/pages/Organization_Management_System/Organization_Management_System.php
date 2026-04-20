@@ -1,6 +1,6 @@
 <div class="scroll-box">
     <ul class="list-group lists">
-        <li class="list-group-item heading">সংগঠন পরিচালনা পদ্ধতি</li>
+        <li class="list-group-item heading">পরিচালনা পদ্ধতি</li>
 
         <li class="list-group-item list-group-item-primary dashed-link"><i class="fas fa-list nav-icon"></i><a href=""> সমবায় সমিতি আইন</a></li>
         <li class="list-group-item list-group-item-secondary dashed-link"><i class="fas fa-list nav-icon"></i><a href=""> সমবায় সমিতি বিধিমালা</a></li>

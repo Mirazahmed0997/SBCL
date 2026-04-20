@@ -124,13 +124,10 @@ class Site extends CI_Controller
 			'document_1' => $document_1,
 			'nomini_sign' => $nomini_sign,
 			'Admission_Issuer_sign' => $Admission_Issuer_sign,
-
-
-		);
+			);
 
 		$this->db->insert('members_n', $data);
-		$this->session->set_flashdata('success', 'অভিনন্দন, আপনার আবেদন সফলভাবে জমা দেওয়া হয়েছে।
-');
+		$this->session->set_flashdata('success', 'অভিনন্দন, আপনার আবেদন সফলভাবে জমা দেওয়া হয়েছে। সদস্যপদ টি একটিভ করতে সদস্য ফী প্রদান করুন ');
 		redirect('member_login');
 	}
 

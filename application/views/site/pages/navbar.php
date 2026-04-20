@@ -1,9 +1,19 @@
+
+
+
+
+
+
+
+
+
+
+
 <div class="container">
-    <!-- <div class="menu-toggle" onclick="toggleMenu()">☰</div> -->
     <nav id="navbar">
         
         <ul>
-            <!-- <li><a href="<?php echo base_url(); ?>" class="active">হোম</a></li> -->
+            <li><a href="<?php echo base_url(); ?>" class="active">হোম</a></li>
             <li class="dropdown">
                 <a href="javascript:void(0)" onclick="toggleDropdown(this)">আমাদের সম্পর্কে <i
                         class="fas fa-chevron-down"></i></a>
@@ -26,16 +36,7 @@
                     <li><a href="#">যুব সমবায় উদ্যোগ</a></li>
                 </ul>
             </li>
-            <li class="dropdown">
-                <a href="javascript:void(0)" onclick="toggleDropdown(this)">প্রশিক্ষণ <i
-                        class="fas fa-chevron-down"></i></a>
-                <ul class="submenu">
-                    <li><a href="#">প্রশিক্ষণ ক্যালেন্ডার</a></li>
-                    <li><a href="#">সমবায় শিক্ষা কোর্স</a></li>
-                    <li><a href="#">অনলাইন লার্নিং প্ল্যাটফর্ম</a></li>
-                    <li><a href="#">প্রশিক্ষণার্থীর মতামত</a></li>
-                </ul>
-            </li>
+            
             <li class="dropdown">
                 <a href="javascript:void(0)" onclick="toggleDropdown(this)">আইন ও বিধিমালা <i
                         class="fas fa-chevron-down"></i></a>
@@ -85,6 +86,9 @@
     </nav>
 </div>
 
+
+
+<!-- ----------------------------- -->
 
 <!-- <style>
     /* Hide menu toggle on desktop */

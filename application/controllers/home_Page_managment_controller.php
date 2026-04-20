@@ -32,24 +32,41 @@ class home_Page_managment_controller extends CI_Controller
     //  ---------------------------- function for file/image uploads------------------
 
 
+    // private function upload_file($field_name, $file_path)
+    // {
+    //     $config['upload_path'] = $file_path;
+    //     $config['allowed_types'] = 'jpg|jpeg|png|pdf';
+    //     $config['max_size'] = 10240; // 10 MB
+    //     $config['encrypt_name'] = TRUE;
+
+    //     $this->load->library('upload', $config);
+    //     $this->upload->initialize($config);
+
+    //     if ($this->upload->do_upload($field_name)) {
+    //         $data = $this->upload->data();
+    //         return $data['file_name'];
+    //     } else {
+    //         return '';
+    //     }
+    // }
+
+
     private function upload_file($field_name, $file_path)
-    {
-        $config['upload_path'] = $file_path;
-        $config['allowed_types'] = 'jpg|jpeg|png|pdf';
-        $config['max_size'] = 2048;
-        $config['encrypt_name'] = TRUE;
+{
+    $config['upload_path'] = FCPATH . 'assets/uploads/project/project_image/';
+    $config['allowed_types'] = 'jpg|jpeg|png|pdf';
+    $config['max_size'] = 10240;
+    $config['encrypt_name'] = TRUE;
 
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
+    $this->load->library('upload', $config);
 
-        if ($this->upload->do_upload($field_name)) {
-            $data = $this->upload->data();
-            return $data['file_name'];
-        } else {
-            return '';
-        }
+    if ($this->upload->do_upload($field_name)) {
+        return $this->upload->data('file_name');
+    } else {
+        echo $this->upload->display_errors();
+        exit;
     }
-
+}
 
 
     // ---------------------achievements method----------------------
@@ -267,7 +284,7 @@ class home_Page_managment_controller extends CI_Controller
 
 
     // -------------------create_slider------------
-    
+
     public function create_slider()
     {
         $user = $this->session->userdata('login_user_info_all');

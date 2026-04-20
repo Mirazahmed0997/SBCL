@@ -12,6 +12,7 @@
 
 <?php $this->load->view('site/pages/homepage_layouts/layout3'); ?>
 
+<?php $this->load->view('site/pages/success_story/success_story'); ?>
 
 
 

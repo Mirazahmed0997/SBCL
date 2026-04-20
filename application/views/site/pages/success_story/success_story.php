@@ -7,12 +7,12 @@ $achievements = $this->db->order_by('created_at', 'DESC')
 
 
 <div class="history-section-title">
-    <h2>সদস্য সমিতি গুলোর কার্যক্রমের স্থিরচিত্র</h2>
+    <h2>সদস্য সমিতির সাফল্য গাঁথা</h2>
 </div>
 
 <div class="history-flex">
     <section class="container" id="history" class="history-section">
-        <!-- <div class="history-container">
+        <div class="history-container">
 
             <div class="history-flex">
                 <div class="history-text">
@@ -32,12 +32,12 @@ $achievements = $this->db->order_by('created_at', 'DESC')
             </div>
 
 
-        </div> -->
+        </div>
 
 
 
 
-        <div class="success-slider-wrapper">
+        <!-- <div class="success-slider-wrapper">
             <div class="success-track" id="successTrack">
                 <?php if (!empty($achievements)): ?>
                     <?php foreach ($achievements as $row): ?>
@@ -54,7 +54,7 @@ $achievements = $this->db->order_by('created_at', 'DESC')
                     <li>No history available</li>
                 <?php endif; ?>
 
-        </div>
+        </div> -->
     </section>
 </div>
 

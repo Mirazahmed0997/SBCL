@@ -68,12 +68,12 @@
                         </div>
 
                         <!-- Footer -->
-                        <div class="card-footer text-end bg-light">
+                        <!-- <div class="card-footer text-end bg-light">
                             <a href="<?= base_url('Admin/edit_member/' . $user->id); ?>"
                                 class="btn btn-primary btn-sm">
                                 ✏️ Edit
                             </a>
-                        </div>
+                        </div> -->
 
                     </div>
 

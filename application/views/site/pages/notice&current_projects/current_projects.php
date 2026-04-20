@@ -5,6 +5,10 @@ $current_projects = $this->db->order_by('created_at', 'DESC')
     ->result_array();
 ?>
 
+
+
+<!-- ------------------------------------------- -->
+
 <div class="current-projects">
     <h3><i class="fas fa-tasks"></i> বিজ্ঞাপন</h3>
     <div class="project-viewport">
@@ -15,7 +19,7 @@ $current_projects = $this->db->order_by('created_at', 'DESC')
                     <div>
                         <img
                             src="<?= base_url('assets/uploads/project/project_image/' . $row['image']) ?>"
-                            alt="Project"
+                            alt="বিজ্ঞাপন"
                             class="clickable-image"
                             data-full="<?= base_url('assets/uploads/project/project_image/' . $row['image']) ?>"
                         >
@@ -29,7 +33,6 @@ $current_projects = $this->db->order_by('created_at', 'DESC')
     </div>
 </div>
 
-<!-- Lightbox Modal -->
 <div id="imageModal" class="modal">
     <span class="close">&times;</span>
     <img class="modal-content" id="modalImage" alt="Full Image">
@@ -67,12 +70,10 @@ $current_projects = $this->db->order_by('created_at', 'DESC')
         transform: scale(1.05);
     }
 
-    /* Modal styles */
     .modal {
         display: none; 
         position: fixed;
         z-index: 1000;
-        /* padding-top: 60px; */
         left: 0;
         top: 0;
         width: 100%;
@@ -86,7 +87,6 @@ $current_projects = $this->db->order_by('created_at', 'DESC')
         display: block;
         width: 100%;
         height: 100%;
-        /* border-radius: 12px; */
         box-shadow: 0 0 25px rgba(255,255,255,0.4);
         animation: zoomIn 0.3s;
     }
@@ -175,3 +175,39 @@ $current_projects = $this->db->order_by('created_at', 'DESC')
         }
     });
 </script>
+
+
+
+
+<!-- -------------------------------------->
+ <!-- <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+
+  <div class="carousel-indicators">
+    <?php foreach ($current_projects as $index => $row): ?>
+      <button type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="<?= $index; ?>"
+        class="<?= ($index == 0) ? 'active' : ''; ?>">
+      </button>
+    <?php endforeach; ?>
+  </div>
+
+  <div class="carousel-inner">
+    <?php foreach ($current_projects as $index => $row): ?>
+      <div class="carousel-item <?= ($index == 0) ? 'active' : ''; ?>">
+        <img class="d-block w-100"
+          src="<?= base_url('assets/uploads/project/project_image/' . $row['image']) ?>"
+          alt="Slide <?= $index; ?>">
+      </div>
+    <?php endforeach; ?>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+
+</div> -->

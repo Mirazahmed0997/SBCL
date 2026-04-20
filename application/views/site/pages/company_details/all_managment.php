@@ -20,10 +20,10 @@ $managment_info = $this->db->order_by('id', 'asc')
                     <img src="<?= base_url('./assets/uploads/project/management_img/' . $row['image']) ?>" alt="">
                     <p style="font-size: 14px; line-height: 1.1; font-weight: bold; "><?= htmlspecialchars($row['name']) ?></p>
                     <p style="font-size: 14px;" class=" designation"><?= htmlspecialchars($row['designation']) ?></p>
-                    <p class="details" style="font-size: 14px; line-height: 1.1;">
+                    <!-- <p class="details" style="font-size: 14px; line-height: 1.1;">
                         <?= htmlspecialchars(mb_substr($row['details'], 0, 30)) ?>
                         <?= mb_strlen($row['details']) > 30 ? '...' : '' ?>
-                    </p>
+                    </p> -->
                     <a style="font-size: 14px; line-height: 1.1;"
                         href="<?= base_url('management_details/' . $row['id']); ?>" class="dashed-link">বিস্তারিত</a>
                 </div>
@@ -35,12 +35,12 @@ $managment_info = $this->db->order_by('id', 'asc')
             <?php foreach (array_slice($managment_info, 2) as $row): ?>
                 <div class="member-card">
                     <img src="<?= base_url('./assets/uploads/project/management_img/' . $row['image']) ?>" alt="">
-                    <p style="font-size: 14px; line-height: 1.1; font-weight: bold"><?= htmlspecialchars($row['name']) ?></p>
+                    <p style="font-size: 14px; line-height: 1; font-weight: bold"><?= htmlspecialchars($row['name']) ?></p>
                     <p style="font-size: 14px;" class=" designation"><?= htmlspecialchars($row['designation']) ?></p>
-                    <p class="details" style="font-size: 14px; line-height: 1.1;">
+                    <!-- <p class="details" style="font-size: 14px; line-height: 1.1;">
                         <?= htmlspecialchars(mb_substr($row['details'], 0, 30)) ?>
                         <?= mb_strlen($row['details']) > 30 ? '...' : '' ?>
-                    </p>
+                    </p> -->
                     <a style="font-size: 14px; line-height: 1.1;"
                         href="<?= base_url('management_details/' . $row['id']); ?>" class="dashed-link">বিস্তারিত</a>
                 </div>

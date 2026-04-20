@@ -1,6 +1,6 @@
 <div class="scroll-box">
     <ul class="list-group">
-    <li class="list-group-item heading">সমিতির উদ্দেশ্য ও মূল কার্যক্রম</li>
+    <li class="list-group-item heading">ব্যবস্থাপনা ও কার্যক্রম</li>
 
     <li class="list-group-item list-group-item-primary dashed-link"><i class="fas fa-list nav-icon"></i> <a href=""> ব্যবস্থাপনা কমিটির সভা </a></li>
     <li class="list-group-item list-group-item-secondary dashed-link"><i class="fas fa-list nav-icon"></i><a href=""> সদস্য ভর্তি

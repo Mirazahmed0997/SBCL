@@ -303,3 +303,25 @@ function visitor_count() {
 	$total_visitor = count($data);
 	return $total_visitor;
 }
+
+
+function track_visitor()
+{
+    $CI =& get_instance();
+    $CI->load->database();
+
+    $ip = $CI->input->ip_address();
+    $today = date('Y-m-d');
+
+    $exists = $CI->db->where('ip_address', $ip)
+                     ->where('DATE(visit_time)', $today)
+                     ->get('newvisitors')
+                     ->row();
+
+    if (!$exists) {
+        $CI->db->insert('newvisitors', [
+            'ip_address' => $ip,
+            'visit_time' => date('Y-m-d H:i:s')
+        ]);
+    }
+}

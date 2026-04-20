@@ -156,7 +156,7 @@
             </div> -->
             <div class="form-group">
                 <label>সমিতির শ্রেনি</label>
-                <select name="Cooperative_association_type" required>
+                <select name="Cooperative_association_class" required>
                     <option value="">নির্বাচন করুন</option>
                     <option value="প্রাথমিক">প্রাথমিক</option>
                     <option value="কেন্দ্রীয়">কেন্দ্রীয়</option>
@@ -241,7 +241,7 @@
         </div>
 
 
-        <div class="form-section-title">৫. ভর্তি ইস্যুকারী তথ্য</div>
+        <!-- <div class="form-section-title">৫. ভর্তি ইস্যুকারী তথ্য</div>
         <div class="grid-container">
             <div class="form-group">
                 <label>ভর্তি ইস্যুকারী স্বাক্ষর</label>
@@ -264,7 +264,7 @@
 
 
 
-        </div>
+        </div> -->
 
         <div style="margin-top: 20px;">
             <input type="checkbox" name="check_option" id="terms" required>

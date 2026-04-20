@@ -18,10 +18,10 @@ $managment_info = $this->db->order_by('id', 'asc')
                     <div class="card-body" style="padding: 10px;">
                         <p style="font-size: 14px; line-height: 1.1;"><?= htmlspecialchars($info['name']) ?></p>
                         <p style="font-size: 14px;" class=" designation"><?= htmlspecialchars($info['designation']) ?></p>
-                        <p class="details" style="font-size: 14px; line-height: 1.1;">
+                        <!-- <p class="details" style="font-size: 14px; line-height: 1.1;">
                             <?= htmlspecialchars(mb_substr($info['details'], 0, 50)) ?>
                             <?= mb_strlen($info['details']) > 50 ? '...' : '' ?>
-                        </p>
+                        </p> -->
                         <a style="font-size: 14px; line-height: 1.1;"
                             href="<?= base_url('management_details/' . $info['id']); ?>" class="dashed-link">বিস্তারিত</a>
                     </div>

@@ -9,7 +9,8 @@ $banner_image = $this->db->order_by('created_at', 'DESC')
         <?php if (!empty($banner_image)): ?>
             <?php foreach ($banner_image as $index => $row): ?>
                 <div class="slide <?= $index === 0 ? 'active' : '' ?>">
-                    <img src="<?= base_url('assets/uploads/project/banner_image/' . $row['image']) ?>" alt="Slide <?= $index + 1 ?>">
+                    <img src="<?= base_url('assets/uploads/project/banner_image/' . $row['image']) ?>"
+                        alt="Slide <?= $index + 1 ?>">
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
@@ -23,6 +24,8 @@ $banner_image = $this->db->order_by('created_at', 'DESC')
         <?php endforeach; ?>
     </div>
 </section>
+
+
 
 <script>
     const slides = document.querySelectorAll('.slide');
@@ -62,15 +65,15 @@ $banner_image = $this->db->order_by('created_at', 'DESC')
         left: 0;
         width: 100%;
         height: 100%;
-        opacity: 0;
-        transition: opacity 1s ease-in-out;
-        z-index: 0;
+        /* opacity: 0; */
+        /* transition: opacity 1s ease-in-out;
+        z-index: 0; */
     }
 
-    .slide.active {
+    /* .slide.active {
         opacity: 1;
         z-index: 1;
-    }
+    } */
 
     .slider-dots {
         position: absolute;
@@ -117,7 +120,11 @@ $banner_image = $this->db->order_by('created_at', 'DESC')
         object-fit: cover;
         object-position: center;
         display: block;
+        opacity: 1 !important;
+        filter: none !important;
     }
+
+  
 
     @media (max-width: 1024px) {
         .slider {
@@ -129,36 +136,39 @@ $banner_image = $this->db->order_by('created_at', 'DESC')
         .slider {
             height: 300px;
         }
-         .slide img {
-        width: 100%;
-        height: fit-content;
-        object-fit: cover;
-        object-position: center;
-        display: block;
-    }
-    .slider-container {
-        width: 100%;
-        height: fit-content;
-        margin: 0 auto;
-    }
+
+        .slide img {
+            width: 100%;
+            height: fit-content;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .slider-container {
+            width: 100%;
+            height: fit-content;
+            margin: 0 auto;
+        }
     }
 
     @media (max-width: 480px) {
         .slider {
             height: 220px;
         }
-         .slide img {
-        width: 100%;
-        height: fit-content;
-        object-fit: cover;
-        object-position: center;
-        display: block;
-    }
-    .slider-container {
-        width: 100%;
-        height: fit-content;
-        margin: 0 auto;
-    }
+
+        .slide img {
+            width: 100%;
+            height: fit-content;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .slider-container {
+            width: 100%;
+            height: fit-content;
+            margin: 0 auto;
+        }
     }
 </style>
-

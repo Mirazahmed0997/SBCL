@@ -3,7 +3,7 @@
     <div class="content-header">
         <div class="container-fluid">
             <!-- Search / Filter Form -->
-            <form method="get" action="<?= base_url('news_notice_management/news_list') ?>">
+            <form method="get" action="<?= base_url('news_notice_management/notice_list') ?>">
                 <div class="row g-2 mb-3 align-items-center">
                     <div class="col-md-auto">
                         <button type="button" class="btn btn-primary"><i class="fas fa-search"></i> সদস্য
@@ -11,7 +11,7 @@
                     </div>
                     <div class="col-md">
                         <input type="text" name="id" value="<?= $this->input->get('id') ?>" class="form-control"
-                            placeholder="News ID">
+                            placeholder="Notice ID">
                     </div>
                     <div class="col-md">
                         <input type="text" name="headline" class="form-control" placeholder="Headline">
@@ -45,12 +45,12 @@
         </div>
     </div>
 
-    <!-- news Table -->
+    <!-- notices Table -->
     <section class="content">
         <div class="container-fluid">
             <div class="card shadow">
                 <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0 text-center">সংবাদ তালিকা</h5>
+                    <h5 class="mb-0 text-center">নোটিশ তালিকা</h5>
                 </div>
 
 
@@ -62,7 +62,7 @@
                             style="width:100%; white-space: nowrap;">
 
                             <button type="button" class="btn btn-success m-2" id="openCreateModal">
-                                <i class="fas fa-edit"></i> Create new Announcement
+                                <i class="fas fa-edit"></i> Create Notice
                             </button>
 
                             <thead class="thead-dark">
@@ -79,20 +79,17 @@
                             </thead>
                             <tbody>
                                 <?php $i = 1;
-                                foreach ($current_projects as $row): ?>
+                                foreach ($notices as $row): ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
-                                        <td style="max-height: 40px; overflow-y: auto; white-space: normal;"><?= $row->title; ?></td>
-                                        <td style="max-height: 40px; overflow-y: auto; white-space: normal;"><?= $row->details; ?></td>
+                                        <td><?= $row->headline; ?></td>
+                                        <td style="max-height: 100px; overflow-y: auto; white-space: normal;"><?= $row->details; ?></td>
                                         <td>
-                                            <img src="<?= base_url('./assets/uploads/project/project_image/' . $row->image) ?>"
+                                            <img src="<?= base_url('/assets/uploads/project/notice_image/' . $row->image) ?>"
                                                 alt="Image" width="100px" height="100px">
                                         </td>
-
-
                                         <td>
-                                            <form action="<?= base_url('projects_active_status/' . $row->id); ?>"
-                                                method="post">
+                                            <form action="<?= base_url('update_notice_status/' . $row->id); ?>" method="post">
                                                 <select name="status" onchange="this.form.submit()"
                                                     class="form-control form-control-sm">
                                                     <option value=1 <?= $row->status == 1 ? 'selected' : '' ?>>Active
@@ -108,14 +105,13 @@
                                         <td>
                                             <a href="javascript:void(0);" class="btn btn-warning btn-sm open-charge-modal"
                                                 data-id="<?= $row->id; ?>"
-                                                data-title="<?= htmlspecialchars($row->title, ENT_QUOTES); ?>"
+                                                data-headline="<?= htmlspecialchars($row->headline, ENT_QUOTES); ?>"
                                                 data-details="<?= htmlspecialchars($row->details, ENT_QUOTES); ?>">
                                                 <i class="fas fa-edit nav-icon"></i>
                                             </a>
-                                            <a href="<?= base_url('delete_project/' . $row->id) ?>"
+                                            <a href="<?= base_url('delete_notice/' . $row->id) ?>"
                                                 class="btn btn-danger btn-sm"
-                                                onclick="return confirm('Are you sure you want to delete this news?')"><i
-                                                    class="fas fa-trash nav-icon"></i></a>
+                                                onclick="return confirm('Are you sure you want to delete this notice?')"><i class="fas fa-trash nav-icon"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -133,11 +129,11 @@
 
 <!-- ---------------------create popup-------------------------- -->
 
-<?php $this->load->view('admin/current_projects/project_create_form'); ?>
+<?php $this->load->view('admin/news_notice/notice_create_form'); ?>
 
 <!-- ---------------------update popup-------------------------- -->
 
-<?php $this->load->view('admin/current_projects/project_update_form'); ?>
+<?php $this->load->view('admin/news_notice/update_notice_form'); ?>
 
 
 
@@ -186,7 +182,7 @@
         e.preventDefault();
 
     $.ajax({
-        url: "<?= base_url('home_Page_managment_controller/update_projects'); ?>",
+        url: "<?= base_url('news_notice_management/update_news'); ?>",
     type: "POST",
     data: $(this).serialize(),
     success: function (response) {
@@ -205,22 +201,22 @@
     $(document).ready(function () {
         $('.open-charge-modal').on('click', function () {
             var id = $(this).data('id');
-            var title = $(this).data('title');
+            var headline = $(this).data('headline');
             var details = $(this).data('details');
 
             // Set values in modal
-            $('#chargeModal input[name="title"]').val(title);
+            $('#chargeModal input[name="headline"]').val(headline);
             $('#chargeModal textarea[name="details"]').val(details);
 
             // Add hidden input for ID
-            if ($('#chargeModal input[name="projects_id"]').length === 0) {
+            if ($('#chargeModal input[name="notice_id"]').length === 0) {
                 $('<input>').attr({
                     type: 'hidden',
-                    name: 'projects_id',
+                    name: 'notice_id',
                     value: id
                 }).appendTo('#chargeModal form');
             } else {
-                $('#chargeModal input[name="projects_id"]').val(id);
+                $('#chargeModal input[name="notice_id"]').val(id);
             }
 
             // Show the modal

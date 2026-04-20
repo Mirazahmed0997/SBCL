@@ -115,10 +115,10 @@
 	<!-- /.content-wrapper -->
 	<footer class="main-footer">
 
-		<strong>Page rendered in <strong>{elapsed_time}</strong> seconds.</strong>
+		<!-- <strong>Page rendered in <strong>{elapsed_time}</strong> seconds.</strong> -->
 
 		<div class="float-right d-none d-sm-inline-block">
-			<b><?php echo (ENVIRONMENT === 'development') ? 'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></b>
+			<!-- <b><?php echo (ENVIRONMENT === 'development') ? 'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></b> -->
 		</div>
 	</footer>
 

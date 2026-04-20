@@ -18,7 +18,7 @@ $image_slider = $this->db->order_by('created_at', 'DESC')
           <div class="swiper-slide">
 
             <div class="card">
-              <img src="<?= base_url('assets/uploads/project/slider_image/' . $slide['image']) ?>" class="card-img-top" alt="<?= htmlspecialchars($slide['title']) ?>">
+              <img src="<?= base_url('/assets/uploads/project/slider_image/' . $slide['image']) ?>" class="card-img-top" alt="<?= htmlspecialchars($slide['title']) ?>">
               <div class="card-body hover-show">
                 <h5 class="card-title"><?= htmlspecialchars($slide['title']) ?></h5>
               </div>

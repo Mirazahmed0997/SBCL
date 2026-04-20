@@ -1,5 +1,16 @@
 <div class="content-wrapper">
 
+  <?php if ($this->session->flashdata('success')): ?>
+<div class="position-fixed top-0 start-50 translate-middle-x mt-3" style="z-index:9999; width: 400px;">
+    
+    <div class="alert alert-success alert-dismissible fade show shadow">
+        <?= $this->session->flashdata('success'); ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+
+</div>
+<?php endif; ?>
+
     <div class="content-header">
         <div class="container-fluid">
             <!-- Search / Filter Form -->
@@ -85,7 +96,7 @@
                                     <th rowspan="2">চাঁদা পরিশোধের সাল</th>
 
 
-                                    <th class="text-center" colspan="3">ভর্তি ইস্যুকারী স্বাক্ষর </th>
+                                    <!-- <th class="text-center" colspan="3">ভর্তি ইস্যুকারী স্বাক্ষর </th> -->
 
                                     <th rowspan="2">ব্যবস্থাপনা কমিটি অনুমোদনের তারিখ</th>
                                     <th rowspan="2">অনুমোদনকারী</th>
@@ -97,11 +108,11 @@
                                     <th rowspan="4"></th>
                                 </tr>
 
-                                <tr>
+                                <!-- <tr>
                                     <th>স্বাক্ষর </th>
                                     <th>পদবী </th>
                                     <th>তারিখ</th>
-                                </tr>
+                                </tr> -->
                             </thead>
                             <tbody>
                                 <?php $i = 1;
@@ -122,12 +133,12 @@
 
                                         <td><?= $row->subscription_fee; ?></td>
                                         <td><?= $row->payment_year; ?></td>
-                                        <td>
+                                        <!-- <td>
                                             <img src="<?= base_url('/assets/uploads/project/members/admission_issuer_sign/' . $member->Admission_Issuer_sign) ?>"
                                                 alt="Signature" width="40">
                                         </td>
                                         <td><?= $row->Admission_Issuer_designation; ?></td>
-                                        <td><?= $row->Admission_Issue_date; ?></td>
+                                        <td><?= $row->Admission_Issue_date; ?></td> -->
 
 
                                         <td><?= $row->approved_date; ?></td>
@@ -161,7 +172,7 @@
                                                 class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a></td>
                                         <td>
 
-                                            <a href="<?= base_url('Applicant/form_view/' . $row->id); ?>"
+                                            <a href="<?= base_url('Admin/form_view/' . $row->id); ?>"
                                                 class="btn btn-warning btn-sm">Preview</a>
                                             <a href="<?= base_url('Applicant/edit_member/' . $row->id); ?>"
                                                 class="btn btn-warning btn-sm">Update</a>
@@ -374,7 +385,7 @@
     });
 
 
-// ---------------pass ID to modal---------------
+    // ---------------pass ID to modal---------------
 
     $(document).on('click', '.open-charge-modal', function () {
         var id = $(this).data('id');

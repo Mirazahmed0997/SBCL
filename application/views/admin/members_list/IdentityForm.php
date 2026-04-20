@@ -2,142 +2,190 @@
 <html lang="bn">
 
 <head>
+  <meta charset="UTF-8">
+  <title>সদস্যের পরিচয় পত্রের ফরম</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: "SolaimanLipi", Arial, sans-serif;
+      background: #f5f5f5;
+    }
+
+    .page {
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 20px;
+    }
+
+    .dotted-line {
+      border-bottom: 1px dotted #000;
+      min-width: 200px;
+      display: inline-block;
+    }
+
+    .note-box {
+      border: 1px solid #000;
+      font-size: 12px;
+      padding: 10px;
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: 13px;
+    }
+
+    .form-no {
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="content-wrapper  p-12">
+    <div class="page shadow-sm">
+
+      <!-- Header -->
+      <!-- <div class="d-flex justify-content-between">
+        <div></div>
+        <div class="form-no">ফরম নং-০৮</div>
+      </div> -->
+
+      <div class="text-center title">সদস্যের পরিচয় পত্রের ফরম</div>
+      <div class="text-center subtitle">[বিধি ৩৩(১) দ্রষ্টব্য]</div>
+      <div class="text-center subtitle">(কেন্দ্রীয় ও জাতীয় সমিতির জন্য)</div>
+
+      <div class="text-center mt-3">
+        <strong><?= $member->association_name ?> সমবায় সমিতি লি.
+          <div class="subtitle">(পরিচয়পত্র ইস্যুকারী সদস্য কমিটির নাম)</div>
+      </div>
+
+      <!-- Note -->
+      <div class="row mt-3">
+        <div class="col-md-9"></div>
+        <div class="col-md-3">
+          <div class="note-box" style="height: 150px; width: 50%;">
+            সমিতির সভাপতি বা নির্বাহী কর্মকর্তা কর্তৃক সত্যায়িত এবং জেলা বা উপজেলা সমবায় অফিসার কর্তৃক প্রতিস্বাক্ষরিত এক কপি সংযোজন করিতে হইবে
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Fields -->
+      <div class="mt-4">
+
+        <div class="row mb-2">
+          <div class="col-4">০১. সদস্যের নাম </div>
+          <div class="col-8">: <strong><?= $member->name ?></strong></span></div>
+        </div>
+
+        <div class="row mb-2">
+          <div class="col-4">০২. পিতা/স্বামীর নাম</div>
+          <div class="col-8">: <strong><?= $member->father_name ?></span></div>
+        </div>
+
+        <div class="row mb-2">
+          <div class="col-4">০৩. মাতার নাম</div>
+          <div class="col-8">: <strong><?= $member->mother_name ?></strong></span></div>
+        </div>
+
+        <div class="row mb-2">
+          <div class="col-4">০৪. পূর্ণ ঠিকানা</div>
+          <div class="col-8">
+            : গ্রাম: <strong><?= $member->village ?></strong> , ডাকঘর: <strong><?= $member->post ?></strong>, উপজেলা:
+            <strong><?= $member->sub_district ?>, জেলা: <strong><?= $member->district ?></strong>
+          </div>
+        </div>
+
+        <div class="row mb-2">
+          <div class="col-4">০৫. মোবাইল নম্বর</div>
+          <div class="col-8">: <strong><?= $member->mobile_number ?></span></div>
+        </div>
+
+        <div class="row mb-2">
+          <div class="col-4">০৬. সদস্য রেজিস্টার নম্বর</div>
+          <div class="col-8">: <?= $member->Cooperative_association_registration_no ?></span></div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-12">
+            ০৭. এই পরিচয়পত্র ধারী ব্যক্তি বাংলাদেশ জাতীয় সমবায় ইউনিয়ন,সমবায় ব্যাংক ভবন (অষ্টম তলা) ৯/ডি, মতিঝিল বাণিজ্যিক এলাকা, ঢাকা-১০০০ এর সদস্য পদের আবেদন করার সমিতি কর্তৃক ক্ষমতাপ্রাপ্ত
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Signature -->
+      <div class="">
+
+        <div class="sign">
+          সদস্যের স্বাক্ষর<br><br>
+          (০১)<br><br>(০২)<br><br>(০৩)
+        </div>
+
+        <div class="w-50 text-left mt-5 seal d-flex justify-content-between">
+
+          <div class=" mb-3 mb-md-0 seal">
+            প্রত্যয়ন<br>
+            জেলা/উপজেলা সমবায় অফিসার<br>
+            স্বাক্ষর ও সীল
+          </div>
+
+          <div class="seal">
+            সভাপতি/নিবন্ধন কর্মকর্তা<br>
+            স্বাক্ষর ও সীল
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+
+</body>
+
+</html>
+
+
+<style>
+  .seal{
+    margin-top: 30px;
+  }
+</style>
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="bn">
+
+<head>
     <meta charset="UTF-8">
     <title>সদস্য পদের আবেদন ফরম</title>
     <link rel="stylesheet" href="preview.css">
-    <!-- <style>
-        body {
-            background: #eee;
-            display: flex;
-            justify-content: center;
-            padding: 20px;
-        }
-
-
-        .form {
-            width: 800px;
-            /* margin:10px auto; */
-            padding: 40px;
-            border: 1px solid #ccc;
-            font-family: "Times New Roman", Times, serif;
-            line-height: 1.4;
-            color: #800000;
-            background-color: #fff;
-            font-size: 10px;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 10px;
-            border-bottom: 2px solid #800000;
-            padding-bottom: 10px;
-        }
-
-        .row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .input-line {
-            border: none;
-            border-bottom: 1px dotted #000;
-            outline: none;
-            min-height: 20px;
-        }
-
-        .flex {
-            display: flex;
-            margin-top: 10px;
-        }
-
-        .flex input {
-            flex: 1;
-            margin-left: 5px;
-        }
-
-        .section-list {
-            margin-top: 20px;
-        }
-
-        .section-list .item {
-            display: flex;
-            margin-bottom: 8px;
-        }
-
-        .section-list .label {
-            min-width: 250px;
-        }
-
-        .footer {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
-
-        .seal-box {
-            width: 150px;
-            height: 80px;
-            border: 1px dashed #ccc;
-            margin-bottom: 5px;
-            margin-top: 40px;
-        }
-
-        .right-footer {
-            width: 300px;
-        }
-
-        .small-input {
-            border: none;
-            border-bottom: 1px dotted #000;
-            outline: none;
-            flex: 1;
-            margin-left: 5px;
-        }
-
-        .print-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            background: #800000;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .print-btn:hover {
-            background: #a00000;
-        }
-
-
-        @media print {
-            body {
-                margin: 0;
-                padding: 0;
-            }
-
-            .print-btn {
-                display: none !important;
-            }
-        }
-    </style> -->
+    
 
 </head>
 
 <body>
 
     <div class="form">
-        <!-- <button onclick="printForm()" class="print-btn">Print Form</button> -->
 
-        <!-- Header -->
         <div class="header">
             <div style="display:flex;align-items:center;justify-content:center;">
                 <div
                     style="width:70px;height:70px;border:1px solid #000;border-radius:50%;margin-right:15px;display:flex;justify-content:center;align-items:center;overflow:hidden;">
-                    <img src="<?= base_url('assets/uploads/project/members/logo/'.$member->logo) ?>" alt="Logo"
+                    <img src="<?= base_url('assets/uploads/project/members/logo/' . $member->logo) ?>" alt="Logo"
                         style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
                 </div>
                 <div>
@@ -155,7 +203,6 @@
             </div>
         </div>
 
-        <!-- Reference -->
         <div class="row">
             <div>স্মারক নং- <span style="width:150px; font-weight: bold;"><?= $member->sarok_no ?></div>
             <div>তারিখ : <span style="width:150px; font-weight: bold;"><?= $member->sarok_date ?></div>
@@ -165,7 +212,6 @@
             সদস্য পদের আবেদন ফরম
         </h2>
 
-        <!-- Recipient -->
         <div style="margin-bottom:10px;">
             <p style="margin:0;">সভাপতি/সম্পাদক</p>
             <p style="margin:0;">বাংলাদেশ জাতীয় সমবায় ইউনিয়ন,</p>
@@ -175,7 +221,6 @@
 
         <p>জনাব,</p>
 
-        <!-- Personal Info -->
         <div class="Personal-info ">
             <p style="font-size:12px;">
                 আমি (নাম) : <span style="font-weight: bold">
@@ -213,7 +258,6 @@
             বিধিমালা, ২০০৪ (সংশোধিত ২০২০) মানিয়া চলিতে সম্মত আছি।
         </p>
 
-        <!-- List Section -->
         <div class="section-list">
 
             <div class="item">
@@ -280,40 +324,7 @@
             </div>
 
         </div>
-        <!-- <div class="section-list">
-            <script>
-                const items = [
-                    "১. সমিতির নাম",
-                    "২. সমিতির নিবন্ধিত ঠিকানা",
-                    "৩. বর্তমান ঠিকানা",
-                    "৪. যোগাযোগের মোবাইল নম্বর সমিতির",
-                    "৫. সভাপতি",
-                    "৬. সম্পাদক",
-                    "৭. তারিখ",
-                    "৮. সমিতির রেজিস্ট্রেশন নং",
-                    "৯. সমিতির শ্রেণি",
-                    "১০ . সমিতির সদস্য সংখ্যা",
-                    "১১. সমিতির সদস্য নির্বাচনী ও কর্ম এলাকা",
-
-                ];
-
-                document.write(items.map(i => `
-        <div class="item">
-          <span class="label">${i}</span>
-          <span style="margin-right:10px; font-weight: bold;"> : XXXXXXXXXXXXXXXXX</span>
-        </div>
-      `).join(""));
-
-
-                function printForm() {
-                    window.print();
-                }
-            </script>
-            <span class="label">১২. মনোনীত সদস্যের পরিচয়পত্র (সংযুক্ত)</span><br>
-            <span class="label">১৩. সমিতি জেলা সমবায় ইউনিয়নের সদস্যভুক্ত/সদস্যভুক্ত নহে</span>
-        </div> -->
-
-        <!-- Footer -->
+       
         <div class="footer">
             <div style="text-align:center;">
                 <div class="seal-box"></div>
@@ -327,7 +338,7 @@
                 <div style="margin-top:20px;">
                     <div style="display: flex; gap: 5px; align-items: center;">
                         (০১) স্বাক্ষর
-                    <img src="<?= base_url('assets/uploads/project/members/nominee_sign/'.$member->nomini_sign) ?>" width="80">
+                    <img src="<?= base_url('assets/uploads/project/members/nominee_sign/' . $member->nomini_sign) ?>" width="80">
                     </div>
                     <div class="flex">নাম : <span style="font-weight: bold;"><?= $member->name ?></div>
                     <div class="flex">পদবী : <span style="font-weight: bold;"><?= $member->branch_designation ?></div>
@@ -341,4 +352,4 @@
 
 </body>
 
-</html>
+</html> -->

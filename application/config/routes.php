@@ -127,8 +127,11 @@ $route['members_account_details'] = 'Applicant/members_account';
 $route['update_member/(:num)'] = 'Site/update_member/$1';
 
 
-// ---------------------managment details-------------------
+// ---------------------products managment details-------------------
 
+$route['create_category_form'] = 'Products_controller/create_category_form';
+$route['create_category'] = 'Products_controller/create_category';
+$route['category_list'] = 'Products_controller/category_list';
 
 
 

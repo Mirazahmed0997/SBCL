@@ -102,7 +102,32 @@ class Admin extends CI_Controller
 		}
 
 		//  Render the member details inside dashboard layout
+		// $path = 'admin/members_list/IdentityForm';
 		$path = 'admin/members_list/form_view';
+		$this->engine->render_view($data, $path, $this->side_menu, $this->main_layout);
+	}
+
+
+	public function IdentityForm_view($id = null)
+	{
+		//  Redirect if no ID
+		if (empty($id)) {
+			redirect(base_url('Admin/members_list'));
+		}
+
+		//  Set dashboard navigation & page title
+		$data = $this->engine->store_nav('members_list', 'members_list', 'সদস্য বিস্তারিত');
+
+		// Fetch the specific member
+		$data['member'] = $this->Common->get_data_single_conditional('members_n', 'id', $id)->row();
+
+		//  Check if member exists
+		if (!$data['member']) {
+			show_404(); // member not found
+		}
+
+		//  Render the member details inside dashboard layout
+		$path = 'admin/members_list/IdentityForm';
 		$this->engine->render_view($data, $path, $this->side_menu, $this->main_layout);
 	}
 

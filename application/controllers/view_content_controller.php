@@ -12,7 +12,7 @@ class View_content_controller extends CI_Controller
 
 
 
-   
+
     public function ica()
     {
         $this->load->view('site/pages/ica/ica');
@@ -55,9 +55,9 @@ class View_content_controller extends CI_Controller
     }
 
 
-    
 
-     // -------------------news details------------
+
+    // -------------------news details------------
     public function notice_details($id = null)
     {
         if (!$id) {
@@ -86,7 +86,7 @@ class View_content_controller extends CI_Controller
         $this->load->view('site/pages/company_details/all_managment');
     }
 
-   
+
     public function get_management_info()
     {
         $data['managment_info'] = $this->db->order_by('created_at', 'DESC')
@@ -95,7 +95,7 @@ class View_content_controller extends CI_Controller
 
         return $data['managment_info'];
     }
-      // -------------------mamagement_details---------------------
+    // -------------------mamagement_details---------------------
 
 
     public function management_details($id)
@@ -105,7 +105,7 @@ class View_content_controller extends CI_Controller
         }
 
         $data['managment_info'] = $this->db->where('id', $id)
-           
+
             ->get('managment_info')
             ->row_array();
 
@@ -114,6 +114,17 @@ class View_content_controller extends CI_Controller
         }
 
         $this->load->view('site/pages/company_details/managment_details', $data);
+    }
+
+
+    // visitors
+    public function total_visitors()
+    {
+        $this->load->database();
+
+        $total = $this->db->count_all('visitors');
+
+        echo "Total Visitors: " . $total;
     }
 
 }

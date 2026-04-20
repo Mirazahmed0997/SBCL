@@ -144,6 +144,36 @@
 
 
 
+
+
+                        
+                        <li class="nav-item has-treeview <?= ($sub_nav == 'gallery') ? 'menu-open' : ''; ?>">
+
+                            <a href="#" class="nav-link <?= ($sub_nav == 'gallery') ? 'active' : ''; ?>">
+                                <i class="fas fa-newspaper nav-icon"></i>
+                                <p>
+                                    প্রোডাক্ট ব্যবস্থাপনা
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="<?= base_url('category_list') ?>"
+                                        class="nav-link <?= active_nav('image_gallery_list', $sub_nav); ?>">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>ক্যাটাগরি</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                        </li>
+
+
+
+
                     </ul>
                 </li>
 
@@ -184,14 +214,14 @@
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>আবেদন তালিকা</p>
                             </a>
-                        </li>
-                        <li class="nav-item">
+                        </li> -->
+                        <!-- <li class="nav-item">
                             <a href="<?php echo base_url('Admin/reject_applicant_list') ?>"
                                 class="nav-link <?= active_nav('reject_applicant_list', $sub_nav); ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>আবেদন বাতিলকৃত তালিকা </p>
                             </a>
-                        </li> -->
+                        </li>  -->
 
                     </ul>
                 </li>

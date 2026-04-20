@@ -1,18 +1,25 @@
+<?php
+$count = $this->db->count_all('newvisitors');
+?>
+
 <section class="dark-footer">
     <div class="footer-container">
         <div class="footer-grid">
             <div class="company-info">
                 <div class="footer-logo">
                     <a href="<?= base_url(); ?>">
-                        <img src="<?= base_url('assets/uploads/project/members/logo/91a0505bc70a4089f271d1f87c828ad0.png'); ?>"
+                        <img width="100px"
+                            src="<?= base_url('assets/uploads/project/members/logo/91a0505bc70a4089f271d1f87c828ad0.png'); ?> "
                             alt="BJSU Logo">
                     </a>
+                   <div>
+                     <h5 style=" margin-top: -25px;" class="comh5any-description">
+                        বাংলাদেশ জাতীয় সমবায় ইউনিয়ন</h5>
+                   </div>
                 </div>
-                <h6 class="comh5any-description">
-                    বাংলাদেশ জাতীয় সমবায় ইউনিয়ন
-                </h6>
-                <p>৯/ডি, মতিঝিল বাণিজ্যিক এলাকা, ঢাকা-১০০০, বাংলাদেশ।
-                </p>
+                
+                <p style="font-size: 10px; margin-top: -15px;">৯/ডি, মতিঝিল বাণিজ্যিক এলাকা, ঢাকা-১০০০, বাংলাদেশ।</p>
+
                 <div class="social-links">
                     <a href="#" class="social-link" aria-label="Visit our Facebook page">
                         <img src="https://landinggo.com/assets/img/stock/login/facebook.svg" alt="Facebook"
@@ -72,11 +79,7 @@
                     © 2025 MarketingPro. All rights reserved.
                 </div>
                 <div>
-                    <ul class="policy-links">
-                        <li><a href="#" class="policy-link">Privacy Policy</a></li>
-                        <li><a href="#" class="policy-link">Terms of Service</a></li>
-                        <li><a href="#" class="policy-link">Cookie Policy</a></li>
-                    </ul>
+                        <h5 class="text-black">Visitors : <?= $count ?></h5>
                 </div>
             </div>
         </div>
@@ -87,13 +90,19 @@
 
 
 <style>
+    .footer-logo {
+    display: flex;
+    align-items: end;   
+    gap: 10px;            
+}
     .footer-logo img {
-        max-height: 100px;
-
+        max-height: 80px;
+        background-color: white;
+        border-radius: 50%;
         width: auto;
     }
 
-    
+
 
     /* CSS Custom Properties */
     :root {
@@ -109,7 +118,6 @@
         --color-blue-700: #1d4ed8;
     }
 
-    /* Reset */
     * {
         box-sizing: border-box;
         margin: 0;
@@ -117,7 +125,6 @@
         font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     }
 
-    /* Component Styles */
     .dark-footer {
         background: linear-gradient(90deg, #32aaba, #feb47b);
         color: var(--color-white);
@@ -144,8 +151,9 @@
 
     .footer-grid {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: 3fr 1fr 1fr 1fr;
         gap: 3rem;
+        
     }
 
     @media (min-width: 768px) {

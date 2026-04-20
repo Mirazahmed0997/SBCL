@@ -12,20 +12,7 @@ class gallary_controller extends CI_Controller
         parent::__construct();
         $date = new DateTime();
         $this->serverDateTime = $date->format('Y-m-d H:i') . "\n";
-        // Check if user is logged in
-        $user = $this->session->userdata('login_user_info_all');
-        if (!$user) {
-            $this->session->set_flashdata('login_failed', 'Please login first');
-            redirect('admin');
-            return;
-        }
-
-        // Check role
-        if (!in_array($user->role, ['admin', 'super_admin'])) {
-            $this->session->set_flashdata('error', 'আপনার এই পৃষ্ঠাটি অ্যাক্সেস করার অনুমতি নেই। অনুগ্রহ করে আপনার অ্যাডমিন ক্রেডেনশিয়াল দিয়ে লগইন করুন।');
-            redirect('admin');
-            return;
-        }
+    
 
     }
 

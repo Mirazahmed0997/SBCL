@@ -3,17 +3,17 @@
         <div class="container-fluid">
 
 
-            <div class="card shadow-sm p-4 mb-4">
-                <div class="d-flex justify-content-end align-items-center mb-3">
+            <div class="card shadow-sm p-4">
+                <div class="d-flex justify-content-end align-items-center ">
                     <button onclick="window.print()" class="btn btn-danger">
                         <i class="fas fa-print"></i> Print
                     </button>
                 </div>
-                <div class="header mb-3 d-flex justify-content-center"
+                <div class="header d-flex justify-content-center"
                     style="border-bottom:2px solid #800000; padding-bottom:10px;">
                     <div class="d-flex align-items-center">
                         <div
-                            style="width:70px;height:70px;border:1px solid #000;border-radius:50%;overflow:hidden;margin-right:15px;">
+                            style="width:70px; height:70px; border:1px solid #000; border-radius:50%; overflow:hidden;margin-right:15px;">
                             <img src="<?= base_url('assets/uploads/project/members/logo/' . $member->logo) ?>"
                                 alt="Logo" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
                         </div>
@@ -131,11 +131,17 @@
 
 
 <style>
+    
     @media print {
+        .container-fluid{
+            width: 100%;
+        }
 
         .content-wrapper {
             overflow: visible !important;
             padding: 20px;
+            border: none !important;
+            box-shadow: none !important;
         }
 
         .content-wrapper,
@@ -150,15 +156,13 @@
         }
 
         .card {
-            height: 1200px;
+            height: 1300px;
             width: 100%;
             border: none !important;
             box-shadow: none !important;
-            padding: 20px;
+            padding: 60px;
         }
-
-
-
+        
         .btn {
             display: none !important;
         }

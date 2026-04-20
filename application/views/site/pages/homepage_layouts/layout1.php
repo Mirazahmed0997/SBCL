@@ -81,7 +81,7 @@
     }
 
     /* CENTER SECTION */
-    .center {
+    /* .center {
         flex: 2;
         background: #fff;
         overflow: hidden;
@@ -91,7 +91,7 @@
         width: 100%;
         height:100%;
         object-fit: contain;
-    }
+    } */
 
     /* RIGHT SECTION */
     .right {
