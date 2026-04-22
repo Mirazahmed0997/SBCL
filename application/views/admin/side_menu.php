@@ -166,6 +166,13 @@
                                         <p>ক্যাটাগরি</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="<?= base_url('product_list') ?>"
+                                        class="nav-link <?= active_nav('image_gallery_list', $sub_nav); ?>">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>প্রোডাক্ট</p>
+                                    </a>
+                                </li>
 
                             </ul>
 

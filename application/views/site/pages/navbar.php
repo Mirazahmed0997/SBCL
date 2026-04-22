@@ -1,17 +1,6 @@
-
-
-
-
-
-
-
-
-
-
-
 <div class="container">
     <nav id="navbar">
-        
+
         <ul>
             <li><a href="<?php echo base_url(); ?>" class="active">হোম</a></li>
             <li class="dropdown">
@@ -36,7 +25,7 @@
                     <li><a href="#">যুব সমবায় উদ্যোগ</a></li>
                 </ul>
             </li>
-            
+
             <li class="dropdown">
                 <a href="javascript:void(0)" onclick="toggleDropdown(this)">আইন ও বিধিমালা <i
                         class="fas fa-chevron-down"></i></a>
@@ -68,6 +57,7 @@
                     <li><a href="#">আন্তর্জাতিক অংশীদার</a></li>
                 </ul>
             </li>
+            
             <li class="dropdown">
                 <a href="javascript:void(0)" onclick="toggleDropdown(this)">মিডিয়া <i
                         class="fas fa-chevron-down"></i></a>
@@ -78,6 +68,7 @@
                     <li><a href="#">প্রেস রিলিজ</a></li>
                 </ul>
             </li>
+            <li><a href="<?php echo base_url('all_products'); ?>" class="active">পণ্যদ্রব্য</a></li>
             <li><a href="ica_member">ICA সদস্য</a></li>
             <li><a href="members">সদস্য তথ্য</a></li>
             <li><a href="<?php echo base_url('member_registration'); ?>" class="btn-contact">নতুন সদস্য
@@ -187,4 +178,3 @@ function toggleDropdown(element) {
     </form>
   </div>
 </nav> -->
-

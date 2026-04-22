@@ -7,11 +7,9 @@ $categories = $this->db->get('categories')
 <div class="content-wrapper container-fluid mt-4">
 
     <!-- Header -->
-    <div class="d-flex justify-content-between align-items-center mb-3 bg-secondary">
+    <div class="d-flex justify-content-between align-items-center mb-3 ">
         <h4 class="mb-0">Category List</h4>
-        <a href="<?= base_url('create_category_form') ?>" class="btn btn-primary btn-sm ">
-            + Add Category
-        </a>
+        
     </div>
 
     <!-- Flash Message -->
@@ -25,6 +23,9 @@ $categories = $this->db->get('categories')
     <!-- Table Card -->
     <div class="card shadow-sm">
         <div class="card-body p-0">
+            <a href="<?= base_url('create_category_form') ?>" class="btn btn-primary btn-sm m-3">
+            + Add new Category
+        </a>
 
             <div class="table-responsive">
                 <table class="table table-hover align-middle mb-0">
@@ -35,7 +36,7 @@ $categories = $this->db->get('categories')
                             <th>Category Name</th>
                             <th>Slug</th>
                             <!-- <th width="120">Status</th> -->
-                            <th width="180" class="text-center">Action</th>
+                            <th  class="text-center">Action</th>
                         </tr>
                     </thead>
 
@@ -61,20 +62,20 @@ $categories = $this->db->get('categories')
                                         <?php endif; ?>
                                     </td> -->
 
-                                    <!-- <td class="text-center">
+                                     <td class="text-center">
 
-                                        <a href="<?= base_url('category/edit/' . $row->id) ?>"
+                                        <!-- <a href="<?= base_url('category/edit/' . $row->id) ?>"
                                            class="btn btn-sm btn-warning">
                                             Edit
-                                        </a>
+                                        </a> -->
 
-                                        <a href="<?= base_url('category/delete/' . $row->id) ?>"
+                                        <a href="<?= base_url('Products_controller/delete_category/' . $row['id']) ?>"
                                            onclick="return confirm('Are you sure?')"
                                            class="btn btn-sm btn-danger">
                                             Delete
                                         </a>
 
-                                    </td> -->
+                                    </td> 
                                 </tr>
                             <?php endforeach; ?>
                         <?php else: ?>

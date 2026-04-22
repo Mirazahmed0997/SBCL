@@ -14,6 +14,55 @@ class Site extends CI_Controller
 	}
 
 
+	public function index()
+	{
+		$data = $this->engine->store_nav('site', 'Nothing', 'শিক্ষিত বেকার কেন্দ্রীয় সঞ্চয় ও ঋণদান সমবায় সমিতি');
+		$ip = $this->input->ip_address();
+		$db_ip = $this->Common->get_data_single_conditional('visitors', 'ip', $ip)->row();
+		if (!empty($db_ip)) {
+			$data_table = array(
+				'date' => get_current_time(),
+				'hits' => $db_ip->hits + 1,
+			);
+			$table = 'visitors';
+			$this->Common->update_data($table, 'id', $db_ip->id, $data_table);
+
+		} else {
+			$data_table = array(
+				'date' => get_current_time(),
+				'ip' => $ip,
+				'hits' => 1,
+			);
+			$table = 'visitors';
+			$this->Common->set_data($table, $data_table);
+
+		}
+
+		$where_notice['status'] = 1;
+		$data['notices'] = $this->Common->get_data_multi_conditional_desc('notice_board', $where_notice, 'id')->result();
+		$data['prize'] = $this->Common->get_data('prize')->result();
+		$data['social_works'] = $this->Common->get_data('page4')->result();
+		$data['somity_works'] = $this->Common->get_data('page1')->result();
+		$data['songothon_works'] = $this->Common->get_data('page6')->result();
+		$where_data_slide['status'] = 1;
+		$data['slider_images'] = $this->Common->get_data_multi_conditional_desc('slider', $where_data_slide, 'id')->result();
+		$data['our_info'] = $this->Common->get_data('page7')->result();
+		$data['partners'] = $this->Common->get_data('page2')->result();
+		$data['president'] = $this->Common->get_data_multi_conditional_limit_desc('president', 'id', 1)->row();
+		$data['secretary'] = $this->Common->get_data_multi_conditional_limit_desc('jointsecretary', 'id', 1)->row();
+		$data['ceo'] = $this->Common->get_data_multi_conditional_limit_desc('ceo', 'id', 1)->row();
+		// $data['vice_presidents'] = $this->Common->get_data('vpresidentpic')->result();
+		$data['emp_recruitment'] = $this->Common->get_data('page5')->result();
+		$data['management_info'] = $this->Common->get_data('page3')->result();
+		$data['social_media'] = $this->Common->get_data('media')->row();
+		$where_data_br['status'] = 1;
+		$data['ftchBrakingNws'] = $this->Common->get_data_multi_conditional_desc('tbl_breking_news', $where_data_br, 'id')->result();
+		$where_data_vd['status'] = 1;
+		$data['videos'] = $this->Common->get_data_conditional_limit_desc('video', $where_data_vd, 'id', 6)->result();
+		$path = 'site/pages/homepage';
+		$this->engine->render_front_view($data, $path, $this->header, $this->footer, $this->main_layout);
+	}
+
 
 
 
@@ -39,6 +88,13 @@ class Site extends CI_Controller
 
 
 
+	public function all_products()
+    {
+        $data = $this->engine->store_nav('site', 'Nothing', 'products');
+        $path ='site/pages/all_products/product_card';
+		$this->engine->render_front_view($data, $path, $this->header, $this->footer, $this->main_layout);
+    }
+
 	// ---------------------create member-----------------
 
 	public function member_application()
@@ -61,7 +117,6 @@ class Site extends CI_Controller
 
 		if ($existing_member) {
 			$this->session->set_flashdata('error', 'ইতিমধ্যে এই নম্বর যে একজন সদস্য বিদ্যমান!');
-
 			redirect('member_registration');
 			return;
 		}
@@ -305,54 +360,7 @@ class Site extends CI_Controller
 
 
 
-	public function index()
-	{
-		$data = $this->engine->store_nav('site', 'Nothing', 'শিক্ষিত বেকার কেন্দ্রীয় সঞ্চয় ও ঋণদান সমবায় সমিতি');
-		$ip = $this->input->ip_address();
-		$db_ip = $this->Common->get_data_single_conditional('visitors', 'ip', $ip)->row();
-		if (!empty($db_ip)) {
-			$data_table = array(
-				'date' => get_current_time(),
-				'hits' => $db_ip->hits + 1,
-			);
-			$table = 'visitors';
-			$this->Common->update_data($table, 'id', $db_ip->id, $data_table);
-
-		} else {
-			$data_table = array(
-				'date' => get_current_time(),
-				'ip' => $ip,
-				'hits' => 1,
-			);
-			$table = 'visitors';
-			$this->Common->set_data($table, $data_table);
-
-		}
-
-		$where_notice['status'] = 1;
-		$data['notices'] = $this->Common->get_data_multi_conditional_desc('notice_board', $where_notice, 'id')->result();
-		$data['prize'] = $this->Common->get_data('prize')->result();
-		$data['social_works'] = $this->Common->get_data('page4')->result();
-		$data['somity_works'] = $this->Common->get_data('page1')->result();
-		$data['songothon_works'] = $this->Common->get_data('page6')->result();
-		$where_data_slide['status'] = 1;
-		$data['slider_images'] = $this->Common->get_data_multi_conditional_desc('slider', $where_data_slide, 'id')->result();
-		$data['our_info'] = $this->Common->get_data('page7')->result();
-		$data['partners'] = $this->Common->get_data('page2')->result();
-		$data['president'] = $this->Common->get_data_multi_conditional_limit_desc('president', 'id', 1)->row();
-		$data['secretary'] = $this->Common->get_data_multi_conditional_limit_desc('jointsecretary', 'id', 1)->row();
-		$data['ceo'] = $this->Common->get_data_multi_conditional_limit_desc('ceo', 'id', 1)->row();
-		// $data['vice_presidents'] = $this->Common->get_data('vpresidentpic')->result();
-		$data['emp_recruitment'] = $this->Common->get_data('page5')->result();
-		$data['management_info'] = $this->Common->get_data('page3')->result();
-		$data['social_media'] = $this->Common->get_data('media')->row();
-		$where_data_br['status'] = 1;
-		$data['ftchBrakingNws'] = $this->Common->get_data_multi_conditional_desc('tbl_breking_news', $where_data_br, 'id')->result();
-		$where_data_vd['status'] = 1;
-		$data['videos'] = $this->Common->get_data_conditional_limit_desc('video', $where_data_vd, 'id', 6)->result();
-		$path = 'site/pages/homepage';
-		$this->engine->render_front_view($data, $path, $this->header, $this->footer, $this->main_layout);
-	}
+	
 
 	public function view($uri)
 	{

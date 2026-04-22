@@ -39,6 +39,7 @@ $route['news_details/(:num)'] = 'View_content_controller/news_details/$1';
 $route['notice_details/(:num)'] = 'View_content_controller/notice_details/$1';
 $route['management_details/(:num)'] = 'View_content_controller/management_details/$1';
 $route['all_managment'] = 'View_content_controller/all_managment';
+$route['all_products'] = 'Site/all_products';
 
 
 
@@ -132,6 +133,14 @@ $route['update_member/(:num)'] = 'Site/update_member/$1';
 $route['create_category_form'] = 'Products_controller/create_category_form';
 $route['create_category'] = 'Products_controller/create_category';
 $route['category_list'] = 'Products_controller/category_list';
+$route['product_create_form'] = 'Products_controller/create_product_form';
+$route['create_product'] = 'Products_controller/create_product';
+$route['product_list'] = 'Products_controller/product_list';
+$route['product_edit_form/(:num)'] = 'Products_controller/edit_product/$1';
+$route['update_product/(:num)'] = 'Products_controller/update_product/$1';
+$route['delete_product/(:num)'] = 'Products_controller/delete_product/$1';
+$route['product_active_status/(:num)'] = 'Products_controller/product_active_status/$1';
+$route['update_product_images/(:num)'] = 'Products_controller/update_product_images/$1';
 
 
 
