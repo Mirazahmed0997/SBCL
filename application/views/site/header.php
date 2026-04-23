@@ -11,6 +11,11 @@
 </head>
 
 <body>
+    <?php if ($this->session->flashdata('login_success')): ?>
+        <div class="alert alert-danger">
+            <?= $this->session->flashdata('login_success'); ?>
+        </div>
+    <?php endif; ?>
 
     <?php $this->load->view('site/pages/home_page_header'); ?>
 

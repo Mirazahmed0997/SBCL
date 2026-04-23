@@ -13,7 +13,6 @@
 
 <?php $this->load->view('site/pages/success_story/success_story'); ?>
 
-<!-- <?php $this->load->view('site/pages/all_products/all_products'); ?> -->
 
 
 

@@ -13,6 +13,28 @@ class Site extends CI_Controller
 		parent::__construct();
 	}
 
+	protected function check_login()
+	{
+		$user = $this->session->userdata('login_user_info_all');
+
+		if (!$user) {
+			$this->session->set_flashdata('error', 'পেইজটি এক্সেসেস করতে, দয়া করে মেম্বার আইডি লগইন করুন');
+			redirect('member_login');
+			// exit;
+		}
+
+		echo($user->active_status);
+
+		if ($user->active_status != 1) {
+			$this->session->set_flashdata('error', 'আপনার মেম্বারশিপ একটিভ নয়, দয়া করে কতৃপক্ষের সাথে যোগাযোগ করুন');
+			redirect('member_login');
+			exit;
+		}
+
+
+		return $user;
+	}
+
 
 	public function index()
 	{
@@ -86,14 +108,17 @@ class Site extends CI_Controller
 		}
 	}
 
+	
+
 
 
 	public function all_products()
-    {
-        $data = $this->engine->store_nav('site', 'Nothing', 'products');
-        $path ='site/pages/all_products/product_card';
+	{
+		$this->check_login();
+		$data = $this->engine->store_nav('site', 'Nothing', 'products');
+		$path = 'site/pages/all_products/product_card';
 		$this->engine->render_front_view($data, $path, $this->header, $this->footer, $this->main_layout);
-    }
+	}
 
 	// ---------------------create member-----------------
 
@@ -179,7 +204,7 @@ class Site extends CI_Controller
 			'document_1' => $document_1,
 			'nomini_sign' => $nomini_sign,
 			'Admission_Issuer_sign' => $Admission_Issuer_sign,
-			);
+		);
 
 		$this->db->insert('members_n', $data);
 		$this->session->set_flashdata('success', 'অভিনন্দন, আপনার আবেদন সফলভাবে জমা দেওয়া হয়েছে। সদস্যপদ টি একটিভ করতে সদস্য ফী প্রদান করুন ');
@@ -342,10 +367,6 @@ class Site extends CI_Controller
 
 		redirect(base_url('applicant/members_list/member_Details/' . $id));
 	}
-	
-
-
-	
 
 
 
@@ -360,7 +381,11 @@ class Site extends CI_Controller
 
 
 
-	
+
+
+
+
+
 
 	public function view($uri)
 	{

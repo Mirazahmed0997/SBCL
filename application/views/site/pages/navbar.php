@@ -37,7 +37,7 @@
                     <li><a href="#">তথ্য অধিকার (RTI)</a></li>
                 </ul>
             </li>
-            <li class="dropdown">
+            <!-- <li class="dropdown">
                 <a href="javascript:void(0)" onclick="toggleDropdown(this)">ডিজিটাল সেবা <i
                         class="fas fa-chevron-down"></i></a>
                 <ul class="submenu">
@@ -46,7 +46,7 @@
                     <li><a href="#">ই-লাইব্রেরি</a></li>
                     <li><a href="#">অভিযোগ প্রতিকার (GRS)</a></li>
                 </ul>
-            </li>
+            </li> -->
             <li class="dropdown">
                 <a href="javascript:void(0)" onclick="toggleDropdown(this)">আন্তর্জাতিক <i
                         class="fas fa-chevron-down"></i></a>
@@ -57,8 +57,8 @@
                     <li><a href="#">আন্তর্জাতিক অংশীদার</a></li>
                 </ul>
             </li>
-            
-            <li class="dropdown">
+
+            <!-- <li class="dropdown">
                 <a href="javascript:void(0)" onclick="toggleDropdown(this)">মিডিয়া <i
                         class="fas fa-chevron-down"></i></a>
                 <ul class="submenu">
@@ -67,13 +67,48 @@
                     <li><a href="#">ফটো ও ভিডিও গ্যালারি</a></li>
                     <li><a href="#">প্রেস রিলিজ</a></li>
                 </ul>
-            </li>
-            <li><a href="<?php echo base_url('all_products'); ?>" class="active">পণ্যদ্রব্য</a></li>
+            </li> -->
+
+            <li><a href="<?php echo base_url('all_products'); ?>" class="">পণ্যদ্রব্য</a></li>
             <li><a href="ica_member">ICA সদস্য</a></li>
             <li><a href="members">সদস্য তথ্য</a></li>
             <li><a href="<?php echo base_url('member_registration'); ?>" class="btn-contact">নতুন সদস্য
-                    আবেদন</a></li>
-        </ul>
+                    আবেদন</a>
+            </li>
+            
+
+            <?php $user = $this->session->userdata('login_user_info_all'); ?>
+            <?php if ($user): ?>
+
+                <li class="dropdown">
+                    <a href="javascript:void(0)" onclick="toggleDropdown(this)"><?= $user->name ?? 'User'; ?> <i
+                            class="fas fa-chevron-down"></i></a>
+                    <ul class="submenu">
+
+                        <li> <a href="<?= base_url('member_logout') ?>" class="">
+                                Logout
+                            </a></li>
+                    </ul>
+                </li>
+                <li><a href="<?= base_url('my_carts') ?>"><i class="fas fa-shopping-cart"></i></a></li>
+            <?php else: ?>
+
+                <!-- Login button -->
+                <a href="<?= base_url('member_login') ?>" class="">
+                    LOGIN
+                </a>
+                
+
+            <?php endif; ?>
+
+            
+               
+
+            
+
+
+
+           
     </nav>
 </div>
 

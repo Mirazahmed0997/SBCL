@@ -50,8 +50,9 @@ class Member_login extends CI_Controller
 
                 $this->session->set_userdata('current_type', 2);
                 $this->session->set_userdata('login_user_info_all', $user);
-
-                redirect('members');
+                $this->session->set_flashdata('login_success', 'Successfully logged in');
+                redirect('home');
+                // redirect('members');
 
             } else {
 

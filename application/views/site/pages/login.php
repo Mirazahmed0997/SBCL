@@ -5,13 +5,18 @@
     }
 </style>
 <section class="welcome" id="welcome">
+    <?php if ($this->session->flashdata('error')): ?>
+        <div class="alert alert-danger">
+            <?= $this->session->flashdata('error'); ?>
+        </div>
+    <?php endif; ?>
     <div class="container job_details">
         <div class="row align-items-center">
             <div class="col-12 text-justify">
                 <form action="<?php echo base_url('members_login'); ?>" method="post">
                     <input type="hidden" name="userType" value="2">
                     <input type="hidden" name="login_value" value="1">
-                    <h1 class="text-center">Applicant Login</h1>
+                    <h1 class="text-center">Member Login</h1>
                     <?php echo $this->session->flashdata('success') ?>
                     <hr>
                     <div class="row">

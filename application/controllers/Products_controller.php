@@ -330,8 +330,11 @@ public function update_product()
     redirect('product_list');
 }
 
+ 
+
 public function delete_product($id)
     {
+        $this->db->delete('product_images', ['product_id' => $id]);
         $this->Common->delete_data('products', 'id', $id);
         redirect('product_list');
 }

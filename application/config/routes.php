@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['default_controller'] = 'Site/index';
+$route['home'] = 'Site/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
@@ -77,11 +78,6 @@ $route['banner_list'] = 'Home_Page_managment_controller/banner_list';
 // $route['update_banner/(:num)'] = 'home_Page_managment_controller/banner_list/$1';
 $route['delete_banner/(:num)'] = 'Home_Page_managment_controller/delete_banner/$1';
 
-// -----------------------------projects list------------------------
-$route['projects_list'] = 'Home_Page_managment_controller/projects_list';
-$route['delete_project/(:num)'] = 'Home_Page_managment_controller/delete_project/$1';
-$route['projects_active_status/(:num)'] = 'Home_Page_managment_controller/projects_active_status/$1';
-$route['project_details/(:num)'] = 'View_content_controller/project_details/$1';
 
 
 // -----------------achievements_list------------------
@@ -104,6 +100,25 @@ $route['ica_member'] = 'View_content_controller/ica/$1';
 
 
 
+// -------------------------Cart---------------------------------
+$route['add_to_cart/(:num)'] = 'Cart_controller/add/$1';
+$route['update_cart_quantity/(:num)'] = 'Cart_controller/update_cart_quantity/$1';
+$route['remove_cart_item/(:num)'] = 'Cart_controller/remove_cart_item/$1';
+$route['clear_cart'] = 'Cart_controller/clear_cart';
+$route['my_carts'] = 'Cart_controller/my_carts';
+
+// -----------------------------Admin projects list------------------------
+$route['projects_list'] = 'Home_Page_managment_controller/projects_list';
+$route['delete_project/(:num)'] = 'Home_Page_managment_controller/delete_project/$1';
+$route['projects_active_status/(:num)'] = 'Home_Page_managment_controller/projects_active_status/$1';
+$route['project_details/(:num)'] = 'View_content_controller/project_details/$1';
+
+
+
+
+
+
+
 // --------------------Member Registration----------------------
 
 
@@ -113,6 +128,8 @@ $route['member_login'] = 'Member_login/index';
 $route['members_login'] = 'Member_login/login_process';
 $route['member_logout'] = 'Member_login/logout';
 $route['change_password/(:num)'] = 'Member_login/change_password/$1';
+$route['member_logout'] = 'Member_login/logout';
+
 
 
 
