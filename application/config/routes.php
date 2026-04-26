@@ -157,6 +157,7 @@ $route['update_member/(:num)'] = 'Site/update_member/$1';
 
 
 $route['my_orders'] = 'Applicant/my_orders';
+$route['order_details/(:num)'] = 'Applicant/order_details/$1';
 
 
 // ---------------------products managment details-------------------

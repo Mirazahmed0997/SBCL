@@ -5,10 +5,10 @@ $cart_count = 0;
 
 if ($user) {
     $cart_count = $this->db->select_sum('quantity')
-                            ->where('user_id', $user->id)
-                            ->get('cart_items')
-                            ->row()
-                            ->quantity;
+        ->where('user_id', $user->id)
+        ->get('cart_items')
+        ->row()
+        ->quantity;
 }
 
 ?>
@@ -101,11 +101,19 @@ if ($user) {
                             class="fas fa-chevron-down"></i></a>
                     <ul class="submenu">
 
+                        <li>
+                            <a href="<?= base_url('my_orders') ?>" class="">
+                                অর্ডার তালিকা
+                            </a>
+                        </li>
+
                         <li> <a href="<?= base_url('member_logout') ?>" class="">
                                 Logout
                             </a></li>
                     </ul>
                 </li>
+
+
 
 
 

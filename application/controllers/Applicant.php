@@ -46,8 +46,8 @@ class Applicant extends CI_Controller
         $mobile_number = $this->input->get('mobile_number');
         $address = $this->input->get('address');
         $status = $this->input->get('status');
-        $payment_method	 = $this->input->get('payment_method');
-        $total_amount	 = $this->input->get('total_amount');
+        $payment_method = $this->input->get('payment_method');
+        $total_amount = $this->input->get('total_amount');
         $from_date = $this->input->get('from_date');
         $to_date = $this->input->get('to_date');
 
@@ -99,9 +99,36 @@ class Applicant extends CI_Controller
 
         $path = 'applicant/orders_table/orders_table';
         $this->engine->render_view($data, $path, $this->side_menu, $this->main_layout);
-       
+
 
     }
+
+    public function order_details($order_id)
+    {
+        // Order info
+        $this->db->where('id', $order_id);
+        $data = $this->engine->store_nav('my_orders', 'my_orders', 'তালিকা');
+        $data['orders'] = $this->db->get_where('orders_table', [
+            'id' => $order_id
+        ])->row();
+
+        // Order items with product info
+        $this->db->select('order_items.*, products.title');
+        $this->db->from('order_items');
+        $this->db->join('products', 'products.id = order_items.product_id');
+        $this->db->where('order_items.order_id', $order_id);
+
+
+
+        $data['items'] = $this->db->get()->result();
+
+        // $this->load->view('order_details', $data);
+        $path = 'applicant/orders_table/orders_details';
+        $this->engine->render_view($data, $path, $this->side_menu, $this->main_layout);
+    }
+
+
+
     public function members_count()
     {
         $data = $this->engine->store_nav('Nothing', 'Nothing', 'শিক্ষিত বেকার কেন্দ্রীয় সঞ্চয় ও ঋণদান সমবায় সমিতি');

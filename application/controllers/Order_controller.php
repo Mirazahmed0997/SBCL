@@ -117,21 +117,6 @@ class Order_controller extends CI_Controller
    
 
 
-    public function details($order_id)
-    {
-        // Order info
-        $this->db->where('id', $order_id);
-        $data['order'] = $this->db->get('orders')->row();
-
-        // Order items with product info
-        $this->db->select('order_items.*, products.title');
-        $this->db->from('order_items');
-        $this->db->join('products', 'products.id = order_items.product_id');
-        $this->db->where('order_items.order_id', $order_id);
-
-        $data['items'] = $this->db->get()->result();
-
-        $this->load->view('order_details', $data);
-    }
+   
 
 }

@@ -22,7 +22,7 @@ if ($user) {
     <div class="content-header">
         <div class="container-fluid">
             <!-- Search / Filter Form -->
-            <form method="get" action="<?= base_url('my_orders/Applicant') ?>">
+            <form method="get" action="<?= base_url('my_orders') ?>">
                 <div class="row g-2 mb-3 align-items-center">
                     <div class="col-md-auto">
                         <button type="button" class="btn btn-primary"><i class="fas fa-search"></i>
@@ -31,9 +31,6 @@ if ($user) {
                     <div class="col-md">
                         <input type="text" name="id" value="<?= $this->input->get('id') ?>" class="form-control"
                             placeholder="Order ID">
-                    </div>
-                    <div class="col-md">
-                        <input type="text" name="name" class="form-control" placeholder="">
                     </div>
                     <div class="col-md">
                         <input type="text" name="mobile_number" class="form-control" placeholder="মোবাইল নম্বর">
@@ -75,15 +72,15 @@ if ($user) {
         <div class="container-fluid">
             <div class="card shadow">
                 <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0 text-center">সদস্য তালিকা</h5>
+                    <h5 class="mb-0 text-center">অর্ডার তালিকা</h5>
                 </div>
                 <div class="card-body p-2">
                     <div class="table-responsive" style="overflow:auto;">
                         <table id="membersTable" class="table table-bordered table-striped table-hover"
                             style="width:100%; white-space: nowrap;">
-                            <button onclick="window.print()" class="btn btn-success">
+                            <!-- <button onclick="window.print()" class="btn btn-success">
                                 <i class="fas fa-print"></i> Print
-                            </button>
+                            </button> -->
                             <thead class="thead-dark">
                                 <tr>
                                     <th rowspan=""></th>
@@ -94,11 +91,6 @@ if ($user) {
                                     <th rowspan="">Payment Status</th>
                                     <th rowspan="">total_amount</th>
                                     <th rowspan=""></th>
-
-
-
-
-
                                 </tr>
 
 
@@ -114,8 +106,10 @@ if ($user) {
                                         <td><?= $row->payment_method; ?></td>
                                         <td><?= $row->status; ?></td>
                                         <td><?= $row->total_amount; ?></td>
-                                        <td><a href="<?= base_url('members_account_details'); ?>"
-                                                class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a></td>
+                                        <td>
+                                            <a href="<?= base_url('order_details/'.$row->id); ?>"
+                                                class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a>
+                                        </td>
                                         <td>
 
                                     </tr>
