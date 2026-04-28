@@ -1,3 +1,20 @@
+<?php if ($this->session->flashdata('success')): ?>
+    <div class="alert alert-success">
+        <?= $this->session->flashdata('success'); ?>
+    </div>
+<?php endif; ?>
+
+<?php if ($this->session->flashdata('failed')): ?>
+    <div class="alert alert-danger">
+        <?= $this->session->flashdata('failed'); ?>
+    </div>
+<?php endif; ?>
+<?php if ($this->session->flashdata('canceled')): ?>
+    <div class="alert alert-danger">
+        <?= $this->session->flashdata('canceled'); ?>
+    </div>
+<?php endif; ?>
+
 <div class="content-wrapper">
 
 
@@ -72,6 +89,7 @@
                                     <th rowspan="">mobile_number</th>
                                     <th rowspan="">payment_method</th>
                                     <th rowspan="">Order Status</th>
+                                    <th rowspan="">Transaction ID</th>
                                     <th rowspan="">total_amount</th>
                                     <th rowspan=""></th>
                                 </tr>
@@ -88,11 +106,31 @@
                                         <td><?= $row->mobile_number; ?></td>
                                         <td><?= $row->payment_method; ?></td>
                                         <td><?= $row->status; ?></td>
+                                        <td><?= $row->tran_id; ?></td>
                                         <td><?= $row->total_amount; ?></td>
                                         <td>
                                             <a href="<?= base_url('order_details/' . $row->id); ?>"
                                                 class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a>
                                             <a href="" class="btn btn-success btn-sm"><?= $row->payment_status; ?></a>
+
+                                            
+
+                                            <?php if ($row->status != 'completed') { ?>
+
+                                                <?php if ($row->payment_status != 'paid') { ?>
+
+                                                <a href="<?= base_url('Payment_controller/ssl_payment/' . $row->id) ?>"
+                                                    class="btn btn-success">
+                                                    Pay Now
+                                                </a>
+
+                                            <?php } else { ?><?php } ?>
+
+                                            <?php } else { ?>
+
+                                              
+
+                                            <?php } ?>
                                         </td>
                                         <td>
 

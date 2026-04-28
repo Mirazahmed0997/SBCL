@@ -498,17 +498,22 @@ class Admin extends CI_Controller
 
 	 public function order_status($id)
     {
-        $news = $this->db->get_where('orders_table', ['id' => $id])->row();
+		
+        $status = $this->db->get_where('orders_table', ['id' => $id])->row();
+		
+       
 
         $update_data = [
 
             'status' => $this->input->post('status'),
+			
         ];
+		 
 
 
         $this->db->where('id', $id);
         $this->db->update('orders_table', $update_data);
-
+		
         redirect(base_url('admin_orders_table'));
     }
 

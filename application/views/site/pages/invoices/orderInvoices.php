@@ -137,6 +137,7 @@ foreach ($product_ids as $product_id) {
 
             <strong>Status:</strong>
             <?= $orders->status ?? 'Pending' ?>
+            <?= $orders->payment_status ?? 'Pending' ?>
         </div>
     </div>
 

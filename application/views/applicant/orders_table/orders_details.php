@@ -99,6 +99,9 @@ foreach ($product_ids as $product_id) {
                 <span class="badge bg-warning text-dark">
                     <?= $orders->status ?? 'Pending' ?>
                 </span>
+                <span class="badge bg-warning text-dark">
+                    <?= $orders->payment_status ?? 'unpaid' ?>
+                </span>
             </div>
         </div>
 

@@ -118,6 +118,11 @@ $route['my_carts'] = 'Cart_controller/my_carts';
 // ------------------- order  ------------------
 $route['place_order'] = 'Order_controller/place_order';
 
+$route['payment_success/(:num)'] = 'Payment_controller/success/$1';
+$route['payment_failed/(:num)'] = 'Payment_controller/fail/$1';
+$route['payment_cancelled/(:num)'] = 'Payment_controller/cancel/$1';
+
+
 // -----------------------------Admin projects list------------------------
 $route['projects_list'] = 'Home_Page_managment_controller/projects_list';
 $route['delete_project/(:num)'] = 'Home_Page_managment_controller/delete_project/$1';
@@ -128,6 +133,7 @@ $route['project_details/(:num)'] = 'View_content_controller/project_details/$1';
 $route['admin_orders_table'] = 'Admin/admin_orders_table';
 $route['admin_order_details/(:num)'] = 'Admin/order_details/$1';
 $route['order_status/(:num)'] = 'Admin/order_status/$1';
+
 
 
 
