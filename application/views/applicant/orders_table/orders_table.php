@@ -1,20 +1,3 @@
-<!-- <?php
-$user = $this->session->userdata('login_user_info_all');
-
-if ($user) {
-
-    $orders = $this->db->order_by('created_at', 'DESC')
-        ->where('user_id', $user->id)
-        ->get('orders_table')
-        ->result();
-
-} else {
-    $orders = [];
-}
-?> -->
-
-
-
 <div class="content-wrapper">
 
 
@@ -88,7 +71,7 @@ if ($user) {
                                     <th rowspan="">Name</th>
                                     <th rowspan="">mobile_number</th>
                                     <th rowspan="">payment_method</th>
-                                    <th rowspan="">Payment Status</th>
+                                    <th rowspan="">Order Status</th>
                                     <th rowspan="">total_amount</th>
                                     <th rowspan=""></th>
                                 </tr>
@@ -107,8 +90,9 @@ if ($user) {
                                         <td><?= $row->status; ?></td>
                                         <td><?= $row->total_amount; ?></td>
                                         <td>
-                                            <a href="<?= base_url('order_details/'.$row->id); ?>"
+                                            <a href="<?= base_url('order_details/' . $row->id); ?>"
                                                 class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a>
+                                            <a href="" class="btn btn-success btn-sm"><?= $row->payment_status; ?></a>
                                         </td>
                                         <td>
 

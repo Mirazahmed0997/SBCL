@@ -36,7 +36,7 @@ class Applicant extends CI_Controller
         }
 
 
-        $this->db->where('id', $login_user->id);
+        $this->db->where('user_id', $login_user->id);
 
 
         $where_data = array();
@@ -105,14 +105,12 @@ class Applicant extends CI_Controller
 
     public function order_details($order_id)
     {
-        // Order info
         $this->db->where('id', $order_id);
         $data = $this->engine->store_nav('my_orders', 'my_orders', 'তালিকা');
         $data['orders'] = $this->db->get_where('orders_table', [
             'id' => $order_id
         ])->row();
 
-        // Order items with product info
         $this->db->select('order_items.*, products.title');
         $this->db->from('order_items');
         $this->db->join('products', 'products.id = order_items.product_id');

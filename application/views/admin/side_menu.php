@@ -99,7 +99,8 @@
                         <li class="nav-item">
                             <a href="<?php echo base_url('achievements_list') ?>"
                                 class="nav-link <?= active_nav('applicant_pending_list', $sub_nav); ?>">
-                                <i class="fas fa-medal achievement-icon" style="  margin-right: 14px; margin-left: 4px;"></i>
+                                <i class="fas fa-medal achievement-icon"
+                                    style="  margin-right: 14px; margin-left: 4px;"></i>
                                 <p>অর্জন</p>
 
                             </a>
@@ -146,7 +147,7 @@
 
 
 
-                        
+
                         <li class="nav-item has-treeview <?= ($sub_nav == 'gallery') ? 'menu-open' : ''; ?>">
 
                             <a href="#" class="nav-link <?= ($sub_nav == 'gallery') ? 'active' : ''; ?>">
@@ -174,15 +175,38 @@
                                     </a>
                                 </li>
 
+
                             </ul>
 
                         </li>
+                        
 
-
-
-
+                       
                     </ul>
                 </li>
+
+                <li class="nav-item has-treeview <?= ($sub_nav == 'gallery') ? 'menu-open' : ''; ?>">
+
+                            <a href="#" class="nav-link <?= ($sub_nav == 'gallery') ? 'active' : ''; ?>">
+                                <i class="fas fa-newspaper nav-icon"></i>
+                                <p>
+                                    অর্ডার ব্যবস্থাপনা
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="<?= base_url('admin_orders_table') ?>"
+                                        class="nav-link <?= active_nav('image_gallery_list', $sub_nav); ?>">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>অর্ডার তালিকা</p>
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </li>
 
 
                 <br>

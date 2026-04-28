@@ -125,6 +125,11 @@ $route['projects_active_status/(:num)'] = 'Home_Page_managment_controller/projec
 $route['project_details/(:num)'] = 'View_content_controller/project_details/$1';
 
 
+$route['admin_orders_table'] = 'Admin/admin_orders_table';
+$route['admin_order_details/(:num)'] = 'Admin/order_details/$1';
+$route['order_status/(:num)'] = 'Admin/order_status/$1';
+
+
 
 
 

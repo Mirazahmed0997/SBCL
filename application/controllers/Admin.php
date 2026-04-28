@@ -405,6 +405,118 @@ class Admin extends CI_Controller
 
 
 
+	 public function admin_orders_table()
+    {
+        $data = $this->engine->store_nav('my_orders', 'my_orders', 'তালিকা');
+
+
+        $where_data = array();
+
+        $id = $this->input->get('id');
+        $name = $this->input->get('name');
+        $mobile_number = $this->input->get('mobile_number');
+        $address = $this->input->get('address');
+        $status = $this->input->get('status');
+        $payment_method = $this->input->get('payment_method');
+        $total_amount = $this->input->get('total_amount');
+        $from_date = $this->input->get('from_date');
+        $to_date = $this->input->get('to_date');
+
+
+
+        if (!empty($id)) {
+            $where_data['id'] = $id;
+        }
+
+        if (!empty($name)) {
+            $where_data['name'] = $name;
+        }
+
+        if (!empty($mobile_number)) {
+            $where_data['mobile_number'] = $mobile_number;
+        }
+
+        if (!empty($address)) {
+            $where_data['address'] = $address;
+        }
+
+
+        if (!empty($status)) {
+            $where_data['status'] = $status;
+        }
+
+        if (!empty($total_amount)) {
+            $where_data['total_amount'] = $total_amount;
+        }
+        if (!empty($payment_method)) {
+            $where_data['payment_method'] = $payment_method;
+        }
+
+
+
+        if (!empty($where_data)) {
+            $this->db->where($where_data);
+        }
+
+        if (!empty($from_date)) {
+            $this->db->where('created_at >=', $from_date);
+        }
+
+        if (!empty($to_date)) {
+            $this->db->where('created_at <=', $to_date);
+        }
+
+        $data['orders'] = $this->db->get('orders_table')->result();
+
+        $path = 'admin/orders_table/orders_table';
+        $this->engine->render_view($data, $path, $this->side_menu, $this->main_layout);
+
+
+    }
+
+    public function order_details($order_id)
+    {
+        $this->db->where('id', $order_id);
+        $data = $this->engine->store_nav('my_orders', 'my_orders', 'তালিকা');
+        $data['orders'] = $this->db->get_where('orders_table', [
+            'id' => $order_id
+        ])->row();
+
+        $this->db->select('order_items.*, products.title');
+        $this->db->from('order_items');
+        $this->db->join('products', 'products.id = order_items.product_id');
+        $this->db->where('order_items.order_id', $order_id);
+
+
+
+        $data['items'] = $this->db->get()->result();
+
+        // $this->load->view('order_details', $data);
+        $path = 'admin/orders_table/orders_details';
+        $this->engine->render_view($data, $path, $this->side_menu, $this->main_layout);
+    }
+
+	 public function order_status($id)
+    {
+        $news = $this->db->get_where('orders_table', ['id' => $id])->row();
+
+        $update_data = [
+
+            'status' => $this->input->post('status'),
+        ];
+
+
+        $this->db->where('id', $id);
+        $this->db->update('orders_table', $update_data);
+
+        redirect(base_url('admin_orders_table'));
+    }
+
+
+
+
+
+
 
 
 

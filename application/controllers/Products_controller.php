@@ -255,7 +255,6 @@ public function update_product()
 {
     $id = $this->input->post('product_id');
 
-    // 1. Update product info
     $data = [
         'category_id'     => $this->input->post('category_id'),
         'title'           => $this->input->post('title'),
@@ -267,7 +266,6 @@ public function update_product()
     $this->db->where('id', $id);
     $this->db->update('products', $data);
 
-    // 2. Check if new images uploaded
     if (!empty($_FILES['images']['name'][0])) {
 
         $files = $_FILES['images'];
