@@ -35,13 +35,15 @@ class Admin_login extends CI_Controller
 	{
 			$username= $this->input->post('username');
 			$mobile_number= $this->input->post('mobile_number');
+			$email= $this->input->post('email');
 
 			$this->db->where("username", $username);
 			$this->db->where("mobile_number", $mobile_number);
+			// $this->db->where("email", $email);
 
 			$isExist= $this->db->get("users")->row();
 			if ($isExist) {
-			$this->session->set_flashdata('error', 'Already registered');
+			$this->session->set_flashdata('error', 'Already registered with this number');
 
 			redirect('admin_registration');
 			return;
@@ -52,6 +54,7 @@ class Admin_login extends CI_Controller
 
 			'first_name' => $this->input->post('first_name'),
 			'last_name' => $this->input->post('last_name'),
+			'email' => $this->input->post('email'),
 
 			'username' => $this->input->post('username'),
 			'mobile_number' => $this->input->post('mobile_number'),

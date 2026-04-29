@@ -11,22 +11,30 @@ class Payment_controller extends CI_Controller
     {
         parent::__construct();
         $date = new DateTime();
-        // $this->serverDateTime = $date->format('Y-m-d H:i') . "\n";
-        // // Check if user is logged in
-        // $user = $this->session->userdata('login_user_info_all');
-        // if (!$user) {
-        //     $this->session->set_flashdata('login_failed', 'Please login first');
-        //     redirect('admin');
-        //     return;
-        // }
 
-        // // Check role
-        // if (!in_array($user->role, ['admin', 'super_admin'])) {
-        //     $this->session->set_flashdata('error', 'আপনার এই পৃষ্ঠাটি অ্যাক্সেস করার অনুমতি নেই। অনুগ্রহ করে আপনার অ্যাডমিন ক্রেডেনশিয়াল দিয়ে লগইন করুন।');
-        //     redirect('admin');
-        //     return;
-        // }
 
+    }
+
+
+    private function send_order_email($user, $tran_id)
+    {
+        $this->load->library('email');
+
+
+        $message = "<h2>You successfully paid</h2>";
+        $message .= "<p>Transaction ID: #{$tran_id}</p>";
+
+
+
+        $this->email->from('ahmedmiraz87@gmail.com', 'বাংলাদেশ জাতীয় সমবায় ইউনিয়ন');
+        $this->email->to($user->email);
+        $this->email->subject('Order Confirmation');
+        $this->email->message($message);
+
+        if (!$this->email->send()) {
+            echo $this->email->print_debugger();
+            exit;
+        }
     }
 
 
@@ -43,7 +51,7 @@ class Payment_controller extends CI_Controller
         $post_data['currency'] = "BDT";
         $post_data['tran_id'] = uniqid('TRX_');
 
-        $post_data['success_url'] = base_url('payment_success/'.$order_id);
+        $post_data['success_url'] = base_url('payment_success/' . $order_id);
         $post_data['fail_url'] = base_url("Payment_controller/fail");
         $post_data['cancel_url'] = base_url("Payment_controller/cancel");
 
@@ -79,11 +87,6 @@ class Payment_controller extends CI_Controller
     {
         $tran_id = $this->input->post('tran_id');
 
-        
-        // echo '<pre>';
-        // print_r($tran_id);
-        // exit;
-
         $this->db->where('id', $order_id);
         $this->db->update('orders_table', [
             'tran_id' => $tran_id,
@@ -91,10 +94,29 @@ class Payment_controller extends CI_Controller
         ]);
 
 
-        $this->session->set_flashdata('success', 'Successfully paid');
+        $order = $this->db
+            ->get_where('orders_table', ['id' => $order_id])
+            ->row();
 
-        // redirect('applicant/payment_status/success');
+        $user_id=$order->user_id;
+        $user = $this->db
+            ->get_where('users', ['id' => $user_id])
+            ->row();
+
+
+
+        // echo '<pre>';
+        // print_r($user);
+        // exit;
+
+
+
+        $this->session->set_flashdata('success', 'Successfully paid');
+        $this->send_order_email($user, $tran_id);
+
         redirect('my_orders');
+
+
     }
 
     public function fail()

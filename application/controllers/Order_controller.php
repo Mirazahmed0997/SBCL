@@ -97,6 +97,7 @@ class Order_controller extends CI_Controller
         }
 
         $user_id = $user->id;
+        $email = $user->email;
 
 
 
@@ -133,14 +134,6 @@ class Order_controller extends CI_Controller
             $total += 120;
         }
 
-
-
-
-
-
-
-        // $this->db->trans_start();
-
         $order_data = [
             'user_id' => $user_id,
             'total_amount' => $total,
@@ -148,6 +141,7 @@ class Order_controller extends CI_Controller
             'mobile_number' => $mobile_number,
             'address' => $address,
             'payment_method' => $payment_method,
+            'email' => $email,
         ];
 
 
@@ -177,20 +171,7 @@ class Order_controller extends CI_Controller
         // print_r($order_data);
         // exit;
 
-        // $this->db->trans_complete();
         redirect('my_orders');
     }
-
-
-    public function success()
-    {
-        $this->load->view('order_success');
-    }
-
-
-
-
-
-
 
 }

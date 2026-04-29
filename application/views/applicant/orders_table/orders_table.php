@@ -73,14 +73,15 @@
             <div class="card shadow">
                 <div class="card-header bg-primary text-white">
                     <h5 class="mb-0 text-center">অর্ডার তালিকা</h5>
+                 
                 </div>
                 <div class="card-body p-2">
                     <div class="table-responsive" style="overflow:auto;">
                         <table id="membersTable" class="table table-bordered table-striped table-hover"
                             style="width:100%; white-space: nowrap;">
-                            <!-- <button onclick="window.print()" class="btn btn-success">
-                                <i class="fas fa-print"></i> Print
-                            </button> -->
+                            <button  class="alert alert-info text-center">
+                                <a href="<?= base_url('all_products') ?>"> আরো কিনুন</a>
+                            </button>
                             <thead class="thead-dark">
                                 <tr>
                                     <th rowspan=""></th>
@@ -113,22 +114,22 @@
                                                 class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a>
                                             <a href="" class="btn btn-success btn-sm"><?= $row->payment_status; ?></a>
 
-                                            
+
 
                                             <?php if ($row->status != 'completed') { ?>
 
                                                 <?php if ($row->payment_status != 'paid') { ?>
 
-                                                <a href="<?= base_url('Payment_controller/ssl_payment/' . $row->id) ?>"
-                                                    class="btn btn-success">
-                                                    Pay Now
-                                                </a>
+                                                    <a href="<?= base_url('Payment_controller/ssl_payment/' . $row->id) ?>"
+                                                        class="btn btn-success">
+                                                        Pay Now
+                                                    </a>
 
-                                            <?php } else { ?><?php } ?>
+                                                <?php } else { ?>        <?php } ?>
 
                                             <?php } else { ?>
 
-                                              
+
 
                                             <?php } ?>
                                         </td>

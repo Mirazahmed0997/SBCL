@@ -110,7 +110,7 @@
 										echo base_url('assets/backend/dist/img/user.jpg');
 									} ?>" style="height:15px;width:15px;" class="img-circle elevation-2" alt="User Image"> Profile</a>
 						<?php } ?><a class="dropdown-item middle-align"
-							href="<?php echo base_url('member_logout') ?>"><i class="fa fa-power-off"
+							href="<?php echo base_url('logout') ?>"><i class="fa fa-power-off"
 								style="color:red"></i> Logout</a>
 					</div>
 				</li>

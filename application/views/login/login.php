@@ -13,7 +13,7 @@
 
                 <div class="card-header text-center">
                     <h3 class="card-title">
-                        <i class="fas fa-user-shield"></i> অ্যাডমিন প্যানেল লগইন
+                        <i class="fas fa-user-shield"></i>  লগইন প্যানেল
                     </h3>
                 </div>
 

@@ -97,7 +97,7 @@ if ($user) {
             <?php if ($user): ?>
 
                 <li class="dropdown">
-                    <a href="javascript:void(0)" onclick="toggleDropdown(this)"><?= $user->name ?? 'User'; ?> <i
+                    <a href="javascript:void(0)" onclick="toggleDropdown(this)"><?= $user->username ?? 'Account'; ?> <i
                             class="fas fa-chevron-down"></i></a>
                     <ul class="submenu">
 
@@ -107,7 +107,7 @@ if ($user) {
                             </a>
                         </li>
 
-                        <li> <a href="<?= base_url('member_logout') ?>" class="">
+                        <li> <a href="<?= base_url('logout') ?>" class="">
                                 Logout
                             </a></li>
                     </ul>
@@ -156,7 +156,7 @@ if ($user) {
 
 
                 <!-- Login button -->
-                <a href="<?= base_url('member_login') ?>" class="">
+                <a href="<?= base_url('admin') ?>" class="">
                     LOGIN
                 </a>
 

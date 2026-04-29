@@ -51,15 +51,20 @@ foreach ($cart_items as $item) {
                         <form method="post" action="<?= base_url('place_order') ?>">
 
                             <div class="mb-3">
-                                <label>Full Name</label>
+                                <label>User Name</label>
                                 <input type="text" name="name" class="form-control"
-                                    value="<?= htmlspecialchars($user->name ?? '') ?>" required>
+                                    value="<?= htmlspecialchars($user->username ?? '') ?>" required>
                             </div>
 
                             <div class="mb-3">
                                 <label>Phone Number</label>
                                 <input type="text" name="mobile_number" class="form-control"
                                     value="<?= htmlspecialchars($user->mobile_number ?? '') ?>" required>
+                            </div>
+                            <div class="mb-3">
+                                <label>Email</label>
+                                <input type="text" name="email" class="form-control"
+                                    value="<?= htmlspecialchars($user->email ?? '') ?>" required>
                             </div>
 
                             <div class="mb-3">

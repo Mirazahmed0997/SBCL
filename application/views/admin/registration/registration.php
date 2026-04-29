@@ -123,6 +123,10 @@
             <label>Username</label>
             <input type="text" name="username" required>
         </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" name="email" required>
+        </div>
 
         <div class="form-group">
             <label>Mobile Number</label>

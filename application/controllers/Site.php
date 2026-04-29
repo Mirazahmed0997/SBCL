@@ -34,6 +34,20 @@ class Site extends CI_Controller
 
 		return $user;
 	}
+	protected function check_login_user()
+	{
+		$user = $this->session->userdata('login_user_info_all');
+
+		if (!$user) {
+			$this->session->set_flashdata('error', 'পেইজটি এক্সেসেস করতে, দয়া করে আইডি লগইন করুন');
+			redirect('admin');
+			// exit;
+		}
+
+
+
+		return $user;
+	}
 
 
 	public function index()
@@ -114,14 +128,14 @@ class Site extends CI_Controller
 
 	public function all_products()
 	{
-		$this->check_login();
+		$this->check_login_user();
 		$data = $this->engine->store_nav('site', 'Nothing', 'products');
 		$path = 'site/pages/all_products/product_card';
 		$this->engine->render_front_view($data, $path, $this->header, $this->footer, $this->main_layout);
 	}
 	public function checkout()
 	{
-		$this->check_login();
+		$this->check_login_user();
 		$data = $this->engine->store_nav('site', 'Nothing', 'products');
 		$path = 'site/pages/checkout/checkout';
 		$this->engine->render_front_view($data, $path, $this->header, $this->footer, $this->main_layout);
